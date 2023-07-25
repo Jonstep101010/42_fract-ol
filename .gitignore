@@ -1,0 +1,6 @@
+*.out
+fractol
+.vscode/
+.build/
+*.o
+*.d
