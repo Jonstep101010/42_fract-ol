@@ -1,18 +1,20 @@
 NAME		:= fractol
 .DEFAULT_GOAL := all
 
-INCS		:= ./include \
-				./include/libft
-				./include/MLX42
+INCS		= ./include \
+				./include/libft/include \
+				./include/MLX42/include/MLX42 \
+				$(GLFW)/include
 
-LIB			:= ft m
+LIB			:= ft m mlx42
 LIB_FT		:= include/libft/libft.a
-INCS		:= include \
-	include/libft/include
+LIB_MLX		:= include/MLX42/build/libmlx42.a
+GLFW		= $(HOME)/.brew/Cellar/glfw/3.3.8
+MLX42		= $(LIB_MLX) -ldl -L$(GLFW)/lib -lglfw -pthread -lm
 
 BUILD_DIR	:= .build
 
-VPATH		:= src/ src/io src/operations src/sorting src/utils
+VPATH		:= src/
 
 SRC			:= fractol.c
 
@@ -21,27 +23,32 @@ OBJS		:= $(addprefix $(BUILD_DIR)/, $(SRCS:%.c=%.o))
 DEPS		:= $(OBJS:.o=.d)
 
 CC			:= clang
-CFLAGS		?= -Wall -Wextra -Werror
+CFLAGS		?= -Wunreachable-code -g
 CPPFLAGS	:= $(addprefix -I,$(INCS)) -MMD -MP
-LDFLAGS		:= $(addprefix -L,$(dir $(LIB_FT)))
+LDFLAGS		:= $(addprefix -L,$(dir $(LIB_FT), $(dir $(LIB_MLX)), $(GLFW)/lib))
 LDLIB		:= $(addprefix -l,$(LIB))
 
-MAKEFLAGS	+= --silent --no-print-directory
+MAKEFLAGS	+= --no-print-directory --silent
 
 DONE		= printf "\033[0;32m\xE2\x9C\x93\033[0m "
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIB_FT)
-	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) $(LDLIB) -o $(NAME)
-	$(info creating $(NAME) executable)
-	printf "\033[0;32m\xE2\x9C\x93\n\033[0m"
-
 $(LIB_FT):
+	git submodule init
+	git submodule update
 	$(MAKE) -C $(@D) -B
 
-# $(GIT_LIBFT)
-# 	git clone https://github.com/Jonstep101010/libft.git ./include
+$(LIB_MLX):
+	git submodule init
+	git submodule update
+	cd include/MLX42 && cmake -B build
+	cd include/MLX42 && cmake --build build -j4
+
+$(NAME): $(OBJS) $(LIB_FT) $(LIB_MLX)
+	$(CC) $(CFLAGS) $(OBJS) -D WIDTH=1000 -D HEIGHT=1000 ./include/libft/libft.a ./include/MLX42/build/libmlx42.a -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -framework Cocoa -framework OpenGL -framework IOKit -o $(NAME)
+	$(info creating $(NAME) executable)
+	printf "\033[0;32m\xE2\x9C\x93\n\033[0m"
 
 $(BUILD_DIR)/%.o: %.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
@@ -59,7 +66,8 @@ clean:
 	printf "\033[0;32m\xE2\x9C\x93\n\033[0m"
 
 fclean: clean
-	make -C $(dir $(LIB_FT)) fclean
+	rm -fv $(LIB_FT)
+	rm -fv $(LIB_MLX)
 	rm -rf *.d
 	rm -rf $(BUILD_DIR)
 
@@ -73,12 +81,8 @@ re:
 	$(MAKE) fclean
 	$(MAKE) all
 
-vis:
-	$(MAKE) all
-	./push_swap_visualizer/build/bin/visualizer
-
-run: re
-	-./$(NAME)
+run: all
+	./$(NAME)
 
 norme:
 	-norminette src/ | grep Error
@@ -89,6 +93,6 @@ check: norme
 upgrade:
 	-$(MAKE) update && $(MAKE) re
 
-.PHONY: run update upgrade re vis
+.PHONY: run update upgrade re vis 
 # .SILENT:
 -include $(DEPS)

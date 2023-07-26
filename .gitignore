@@ -4,3 +4,4 @@ fractol
 .build/
 *.o
 *.d
+src/tmp.c
