@@ -65,10 +65,10 @@ fclean: clean
 	rm -f $(NAME)
 
 update: fclean
-	git stash
-	git pull
 	git submodule update --init
-	git stash pop
+# git stash
+# git pull
+# git stash pop
 
 re:
 	$(MAKE) fclean
@@ -81,7 +81,7 @@ norme:
 	-norminette src/ | grep Error
 
 upgrade:
-	-$(MAKE) update && $(MAKE)
+	-$(MAKE) update && $(MAKE) re
 
 .PHONY: run update upgrade re
 # .SILENT:
