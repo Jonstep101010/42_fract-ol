@@ -42,7 +42,7 @@ $(LIB_MLX):
 	cmake --build $(@D) -j4
 
 $(NAME): $(OBJS) $(LIB_FT) $(LIB_MLX)
-	$(CC) $(CFLAGS) $(OBJS) -D WIDTH=1000 -D HEIGHT=1000 ./include/libft/libft.a ./include/MLX42/build/libmlx42.a -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -framework Cocoa -framework OpenGL -framework IOKit -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -D WIDTH=1000 -D HEIGHT=1000 -D DEBUG=1 ./include/libft/libft.a ./include/MLX42/build/libmlx42.a -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -framework Cocoa -framework OpenGL -framework IOKit -o $(NAME)
 	$(info creating $(NAME) executable)
 	printf "\033[0;32m\xE2\x9C\x93\n\033[0m"
 
