@@ -14,9 +14,13 @@ MLX42		= $(LIB_MLX) -ldl -L$(GLFW)/lib -lglfw -pthread -lm
 
 BUILD_DIR	:= .build
 
-VPATH		:= src/
+VPATH		:= src/ src/color src/sets src/utils src/io
 
 SRC			:= fractol.c
+SRC_IO		:= init.C
+SRC_SETS	:= mandelbrot.c julia.c
+#SRC_COLOR	:= 
+SRC_UTILS	:= str_tolower.c
 
 SRCS		:= $(SRC)
 OBJS		:= $(addprefix $(BUILD_DIR)/, $(SRCS:%.c=%.o))

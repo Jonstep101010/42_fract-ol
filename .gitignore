@@ -5,3 +5,4 @@ fractol
 *.o
 *.d
 src/tmp.c
+.DS_Store
