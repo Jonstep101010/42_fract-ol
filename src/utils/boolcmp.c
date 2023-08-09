@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   define_set.c                                       :+:      :+:    :+:   */
+/*   boolcmp.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/03 19:59:55 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/09 19:27:02 by jschwabe         ###   ########.fr       */
+/*   Created: 2023/08/09 18:45:17 by jschwabe          #+#    #+#             */
+/*   Updated: 2023/08/09 19:48:47 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-/**@note needs to contain parameters for calls (in t_program)
- * @brief call for Mandelbrot/Julia set
- * 
- */
-void	define_set(t_program *fractol)
+bool	boolcmp(char *argv, char *defined)
 {
-	return ((void)*fractol);
+	if (ft_strncmp(str_tolower(argv), defined, ft_strlen(defined)) == 0)
+		return (true);
+	return (false);
 }

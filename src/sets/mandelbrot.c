@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 19:57:55 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/03 21:05:18 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/08/09 19:30:41 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,6 @@
  */
 void	mandelbrot(t_program *fractol)
 {
-	/* do stuff */
+	(void)fractol;
+	return ;
 }

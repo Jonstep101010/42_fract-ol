@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 19:57:19 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/03 21:05:14 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/08/09 19:23:02 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@
  */
 void	julia(t_program *fractol)
 {
-	/* do stuff */
+	(void)fractol;
+	return ;
 }

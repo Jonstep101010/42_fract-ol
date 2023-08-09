@@ -6,13 +6,14 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 17:45:04 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/03 18:13:33 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/08/09 18:13:15 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
+# include "fractol.h"
 # include <ctype.h>
 # include "MLX42.h"
 

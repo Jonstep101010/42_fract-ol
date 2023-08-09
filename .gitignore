@@ -5,4 +5,5 @@ fractol
 *.o
 *.d
 src/tmp.c
+resources/MLX42.h
 .DS_Store

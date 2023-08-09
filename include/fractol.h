@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 10:30:59 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/03 21:05:05 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/08/09 19:20:29 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 
 /* input/output */
 
+int32_t     main(int argc, char **argv);
 void	init_input(int argc, char **argv, t_program *fractol);
 
 /* sets */
@@ -37,6 +38,7 @@ void	define_set(t_program *fractol);
 
 /* utils */
 
+bool	boolcmp(char *argv, char *defined);
 char	*str_tolower(char *s);
 
 // int	main(void);
