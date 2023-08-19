@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 20:04:14 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/09 19:27:22 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/08/15 14:56:47 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,49 @@ static void	user_color(t_program *fractol, char *color)
 		help_page();
 	if (boolcmp(color, "rainbow"))
 		fractol->pargs.color = rainbow;
+	else if (boolcmp(color, "default"))
+		fractol->pargs.color = rainbow;
 }
 
 /**
  * @brief set default values for fractal creation
- * 
+ * @follow-up values missing (structs.h)
  * @param fractol 
  */
 static void	default_vals(t_program *fractol)
 {
 	fractol->pargs.set = MANDELBROT;
 	fractol->pargs.color = default_color;
+	fractol->pargs.max_iter = 18;
+	fractol->pargs.xmin = -2;
+	fractol->pargs.xmax = 2;
+	fractol->pargs.ymin = -2;
+	fractol->pargs.ymax = 2;
+	fractol->pargs.max_val = 2;
+	fractol->pargs.j_real_num = 0;
+	fractol->pargs.j_img_num = 0;
+}
+
+static void	user_vals(int argc, char **argv, t_program *fractol)
+{
+	int	i;
+
+	i = 1;
+	while (i < argc)
+	{
+		if (boolcmp(argv[i], "iter:") && fractol->pargs.max_iter == 18)
+			fractol->pargs.max_iter = ft_atoi(argv[i] + 5);
+		if (boolcmp(argv[i], "mandelbrot") || boolcmp(argv[i], "julia"))
+			define_set(argv[i], fractol);
+		else if (boolcmp(argv[i], "rainbow")
+			|| boolcmp(argv[i], "default"))
+			user_color(fractol, argv[i]);
+		else
+			help_page();
+		i++;
+	}
+	if (fractol->pargs.max_iter <= 0)
+		help_page();
 }
 
 /**
@@ -54,30 +86,12 @@ static void	default_vals(t_program *fractol)
  */
 void	init_input(int argc, char **argv, t_program *fractol)
 {
-	int	i;
-
-	i = 1;
 	default_vals(fractol);
 	if (argc == 1)
 		return ;
 	if (argc == 2 && boolcmp(argv[1], "help"))
 		help_page();
-	while (i < argc)
-	{
-		if (boolcmp(argv[i], "mandelbrot") || boolcmp(argv[i], "julia"))
-		{
-			if (fractol->pargs.set != NO_INIT)
-				help_page();
-			if (boolcmp(argv[i], "mandelbrot"))
-				fractol->pargs.set = MANDELBROT;
-			else if (boolcmp(argv[i], "julia"))
-				fractol->pargs.set = JULIA;
-		}
-		else if (boolcmp(argv[i], "rainbow")
-			|| boolcmp(argv[i], "default"))
-			user_color(fractol, argv[i]);
-		else
-			help_page();
-		i++;
-	}
+	user_vals(argc, argv, fractol);
+	if (fractol->pargs.color == default_color)
+		fractol->pargs.color = rainbow;
 }

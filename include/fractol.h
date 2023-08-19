@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 10:30:59 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/09 19:20:29 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/08/11 12:21:10 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	init_input(int argc, char **argv, t_program *fractol);
 
 void	mandelbrot(t_program *fractol);
 void	julia(t_program *fractol);
-void	define_set(t_program *fractol);
+void	define_set(char *set, t_program *fractol);
 
 /* utils */
 
