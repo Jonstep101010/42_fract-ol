@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 20:04:14 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/15 14:56:47 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/08/20 21:42:16 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ static void	user_color(t_program *fractol, char *color)
 	if (fractol->pargs.color != default_color)
 		help_page();
 	if (boolcmp(color, "rainbow"))
-		fractol->pargs.color = rainbow;
+		fractol->pargs.color = RAINBOW;
 	else if (boolcmp(color, "default"))
-		fractol->pargs.color = rainbow;
+		fractol->pargs.color = RAINBOW;
 }
 
 /**
@@ -47,15 +47,15 @@ static void	default_vals(t_program *fractol)
 {
 	fractol->pargs.set = MANDELBROT;
 	fractol->pargs.color = default_color;
-	fractol->pargs.max_iter = 18;
+	fractol->pargs.max_iter = 30;
 	fractol->pargs.xmin = -2;
 	fractol->pargs.xmax = 2;
 	fractol->pargs.ymin = -2;
 	fractol->pargs.ymax = 2;
-	fractol->pargs.max_val = 2;
 	fractol->pargs.j_real_num = 0;
 	fractol->pargs.j_img_num = 0;
 }
+	// fractol->pargs.max_val = 2.0;
 
 static void	user_vals(int argc, char **argv, t_program *fractol)
 {
@@ -93,5 +93,5 @@ void	init_input(int argc, char **argv, t_program *fractol)
 		help_page();
 	user_vals(argc, argv, fractol);
 	if (fractol->pargs.color == default_color)
-		fractol->pargs.color = rainbow;
+		fractol->pargs.color = RAINBOW;
 }

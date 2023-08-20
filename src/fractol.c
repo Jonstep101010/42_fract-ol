@@ -6,19 +6,11 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 10:30:12 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/15 15:38:58 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/08/20 21:42:27 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-static int	close_window(void *param)
-{
-	t_program	*window;
-	
-	window = (t_program *)param;
-	exit(0);
-}
 
 //@todo add support for complex julia numbers
 int32_t	main(int argc, char **argv)
@@ -31,31 +23,9 @@ int32_t	main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	fractol.img = mlx_new_image(fractol.mlx, WIDTH, HEIGHT);
 	mlx_image_to_window(fractol.mlx, fractol.img, 0, 0);
-	mlx_close_hook(fractol.mlx, (void *)close_window, NULL);
 	mandelbrot(&fractol);
 	mlx_loop(fractol.mlx);
 	return (EXIT_SUCCESS);
 }
 
-	// if (!fractol.mlx)
-	// {
-	// 	perror(mlx_strerror(mlx_errno));
-	// 	exit(EXIT_FAILURE);
-	// }
-	// img = mlx_new_image(fractol.mlx, WIDTH, HEIGHT);
-	// if (!img)
-	// {
-	// 	mlx_close_window(mlx);
-	// 	perror(mlx_strerror(mlx_errno));
-	// 	exit(EXIT_FAILURE);
-	// }
-	// if (mlx_image_to_window(mlx, img, 0, 0) == -1)
-	// {
-	// 	mlx_close_window(mlx);
-	// 	perror(mlx_strerror(mlx_errno));
-	// 	exit(EXIT_FAILURE);
-	// }
-	// // mlx_loop_hook(mlx, define_set, mlx);
-	// mlx_loop(mlx);
-	// mlx_terminate(mlx);
-	// return (0);
+	// mlx_close_hook(fractol.mlx, (void *)close_window, NULL);

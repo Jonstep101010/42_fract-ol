@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 10:30:59 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/11 12:21:10 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/08/20 21:36:33 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,35 @@
 #  define HEIGHT 1024
 # endif
 
+/* color */
+
+/**
+ * @brief convert rgb to hex using bitwise operators
+ * 
+ * @param r red
+ * @param g green
+ * @param b blue
+ * @return uint32_t color in hex (0xRRGGBB(FF)))
+ */
+uint32_t	rgb_to_hex(uint8_t r, uint8_t g, uint8_t b);
+
+uint32_t	get_iter_color(t_args *args, int x, int y);
+uint32_t	rainbow(int iterations, int max_iterations);
+
+/**
+ * @brief Get the color object from respective color function
+ * 
+ * @param args to access color enum
+ * @param iter pass
+ * @param max_iter pass
+ * @return uint32_t 
+ */
+uint32_t	get_color(t_args *args, int iter);
+
+
 /* input/output */
 
-int32_t     main(int argc, char **argv);
+int32_t main(int argc, char **argv);
 void	init_input(int argc, char **argv, t_program *fractol);
 
 /* sets */

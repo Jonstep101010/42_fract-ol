@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 17:45:04 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/15 14:32:24 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/08/20 19:48:29 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ typedef enum e_set
 typedef enum e_color
 {
 	default_color,
-	rainbow,
+	RAINBOW,
+	TUVALU,
+	INDIA,
+	INTERGRAD,
 }	t_color;
 
 /**
@@ -40,7 +43,6 @@ typedef	struct s_args
 	t_set	set;
 	t_color	color;
 	int		max_iter;
-	double	max_val;
 	double	xmin;
 	double	xmax;
 	double	ymin;
