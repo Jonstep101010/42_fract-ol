@@ -6,59 +6,34 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 19:57:55 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/25 21:54:00 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/08/26 22:33:51 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-/*
-temp_z_real = 0 * 0 - 0 * 0 + (-2 + (x * (2 - (-2)) / WIDTH)) between -2 and 2
-temp_z_imag = 2.0 * 0 * 0 + (-2 + (y * (2 - (-2)) / HEIGHT));-> between -2 and 2
-sqrt(0 * 0 + 0 * 0) > 2.0 -> either reaches 2 or max_iter reached
-	-> color determined by iter
-*/
-
-/**
- * @brief Get the color object
- * 
- * @param args struct of arguments
- * @param x position
- * @param y position
- * @return uint32_t color in hex
- */
-uint32_t	get_iter_color(t_program *fractol, t_args *args, int x, int y)
+static uint32_t	calculate_mandelbrot_color(t_args *args, double cx, double cy)
 {
-	int		iter;
-	double	z_real;
-	double	z_imag;
-	double	temp_z_real;
-	double	temp_z_imag;
+	t_mandelbrot	m;
 
-	iter = -1;
-	z_real = 0.0;
-	z_imag = 0.0;
-	while (++iter < args->max_iter)
+	m.iterations = -1;
+	m.zx = 0.0;
+	m.zy = 0.0;
+	cx = (args->xmin + (cx * (args->xmax - args->xmin) / WIDTH));
+	cy = (args->ymin + (cy * (args->ymax - args->ymin) / HEIGHT));
+	while (++m.iterations < args->max_iterations)
 	{
-		temp_z_real = z_real * z_real - z_imag * z_imag + 
-			(args->xmin + (x * (args->xmax - args->xmin) / WIDTH));
-		temp_z_imag = 2.0 * z_real * z_imag + 
-			(args->ymin + (y * (args->ymax - args->ymin) / HEIGHT));
-		z_real = temp_z_real;
-		z_imag = temp_z_imag;
-		if (sqrt(z_real * z_real + z_imag * z_imag) > 2.0)
+		m.new_zx = m.zx * m.zx - m.zy * m.zy + cx;
+		m.new_zy = 2.0 * m.zx * m.zy + cy;
+		m.zx = m.new_zx;
+		m.zy = m.new_zy;
+		if (sqrt(m.zx * m.zx + m.zy * m.zy) > 2.0)
 			break ;
 	}
-	return (fractol->color_function(iter, args->max_iter));
+	return (args->color_function(m.iterations, args->max_iterations));
 }
 
-		// iter++;
-/**
- * @brief 
- * @follow-up zooming in and out
- * color function through iter && passing real, imag, max_iter
- */
-void	mandelbrot(t_program *fractol)
+void	mandelbrot(t_args *args)
 {
 	int	x;
 	int	y;
@@ -67,8 +42,7 @@ void	mandelbrot(t_program *fractol)
 	y = 0;
 	while (y < HEIGHT)
 	{
-		mlx_put_pixel(fractol->img, x, y, 
-			get_iter_color(fractol, &(fractol->pargs), x, y));
+		mlx_put_pixel(args->img, x, y, calculate_mandelbrot_color(args, x, y));
 		x++;
 		if (x == WIDTH)
 		{
@@ -77,3 +51,10 @@ void	mandelbrot(t_program *fractol)
 		}
 	}
 }
+
+/*
+cx -> between -2 and 2
+cy -> between -2 and 2
+sqrt(0 * 0 + 0 * 0) > 2.0 -> either reaches 2 or max_iter reached
+	-> color determined by iterations
+*/
