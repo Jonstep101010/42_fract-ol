@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 10:30:59 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/26 11:19:41 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/08/26 11:40:16 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ uint32_t	rainbow(int iterations, int max_iterations);
  * @param max_iter pass
  * @return uint32_t 
  */
-uint32_t	get_color(t_args *args, int iter);
+// uint32_t	get_color(t_args *args, int iter);
 
 /* input/output */
 
@@ -58,7 +58,7 @@ void	init_input(int argc, char **argv, t_program *fractol);
 /* sets */
 
 void	mandelbrot(t_program *fractol);
-void	julia(t_program *fractol);
+// void	julia(t_program *fractol);
 void	define_set(char *set, t_program *args);
 
 /* utils */

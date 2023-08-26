@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 19:57:55 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/25 21:54:00 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/08/26 11:38:41 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ void	mandelbrot(t_program *fractol)
 	y = 0;
 	while (y < HEIGHT)
 	{
-		mlx_put_pixel(fractol->img, x, y, 
-			get_iter_color(fractol, &(fractol->pargs), x, y));
+		mlx_put_pixel(fractol->args.img, x, y, 
+			get_iter_color(fractol, &(fractol->args), x, y));
 		x++;
 		if (x == WIDTH)
 		{

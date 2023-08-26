@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 17:45:04 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/26 11:20:02 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/08/26 11:36:49 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,13 @@
 # include <ctype.h>
 # include "MLX42.h"
 
-typedef enum e_set
+typedef enum e_status
 {
 	NO_INIT,
-	MANDELBROT,
-	JULIA,
-	BURNING_SHIP,
-}	t_set;
-
-typedef enum e_color
-{
-	default_color,
-	RAINBOW,
-	TUVALU,
-	INDIA,
-	INTERGRAD,
-}	t_color;
-
-// typedef uint32_t	(*color_function)(int iter, int max_iter) ;
-// color_function	*get_color;
-// uint32_t	(*get_color)(uint32_t (*color_function)(int iter, int max_iter));
+	NO_COLOR,
+	init_set,
+	init_color,
+}	t_status;
 
 /**
  * @follow-up zoom (in, out), move (x, y)
@@ -44,8 +31,10 @@ typedef enum e_color
  */
 typedef	struct s_args 
 {
-	t_set	set;
-	t_color	color;
+	mlx_t		*mlx;
+	mlx_image_t	*img;
+	t_status	set;
+	t_status	color;
 	int		max_iter;
 	double	xmin;
 	double	xmax;
@@ -55,14 +44,10 @@ typedef	struct s_args
 	double	j_real_num;
 }	t_args;
 
-
-
 typedef struct s_program
 {
-	mlx_t		*mlx;
-	mlx_image_t	*img;
-	t_args		pargs;
-	// void		(*set_function)(t_program *fractol);
+	t_args		args;
+	void		(*set_function)(t_args *args);
 	uint32_t	(*color_function)(int iter, int max_iter);
 }	t_program;
 

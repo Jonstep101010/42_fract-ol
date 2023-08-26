@@ -6,36 +6,31 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 10:30:12 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/26 11:20:17 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/08/26 11:54:18 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-// void	call_set(t_program *fractol)
-// {
-// 	if (fractol->pargs.set == MANDELBROT)
-// 		mandelbrot(fractol);
-// 	// else if (fractol->pargs.set == JULIA)
-// 	return ;
-// }
-
 //@todo add support for complex julia numbers
+//@todo add zoom capability
+//@todo add hooks for keys
+//@todo add exit handling
+
 int32_t	main(int argc, char **argv)
 {
 	t_program	fractol;
+	t_args		*args;
 
+	args = &(fractol.args);
 	init_input(argc, argv, &fractol);
-	fractol.mlx = mlx_init(WIDTH, HEIGHT, "fract-ol", true);
-	if (!fractol.mlx)
+	args->mlx = mlx_init(WIDTH, HEIGHT, "fract-ol", true);
+	if (!args->mlx)
 		exit(EXIT_FAILURE);
-	fractol.img = mlx_new_image(fractol.mlx, WIDTH, HEIGHT);
-	mlx_image_to_window(fractol.mlx, fractol.img, 0, 0);
-	mandelbrot(&fractol);
-	// fractol.set_function(&fractol);
-	// julia(&fractol);
-	// call_set(&fractol);
-	mlx_loop(fractol.mlx);
+	args->img = mlx_new_image(args->mlx, WIDTH, HEIGHT);
+	mlx_image_to_window(args->mlx, args->img, 0, 0);
+	fractol.set_function(&(fractol.args));
+	mlx_loop(args->mlx);
 	return (EXIT_SUCCESS);
 }
 
