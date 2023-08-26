@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 17:45:04 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/20 19:48:29 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/08/26 11:20:02 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 # include <ctype.h>
 # include "MLX42.h"
 
-
 typedef enum e_set
 {
 	NO_INIT,
 	MANDELBROT,
 	JULIA,
+	BURNING_SHIP,
 }	t_set;
 
 typedef enum e_color
@@ -33,6 +33,10 @@ typedef enum e_color
 	INDIA,
 	INTERGRAD,
 }	t_color;
+
+// typedef uint32_t	(*color_function)(int iter, int max_iter) ;
+// color_function	*get_color;
+// uint32_t	(*get_color)(uint32_t (*color_function)(int iter, int max_iter));
 
 /**
  * @follow-up zoom (in, out), move (x, y)
@@ -51,11 +55,15 @@ typedef	struct s_args
 	double	j_real_num;
 }	t_args;
 
+
+
 typedef struct s_program
 {
 	mlx_t		*mlx;
 	mlx_image_t	*img;
 	t_args		pargs;
+	// void		(*set_function)(t_program *fractol);
+	uint32_t	(*color_function)(int iter, int max_iter);
 }	t_program;
 
 #endif

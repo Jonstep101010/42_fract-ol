@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 19:57:55 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/20 21:43:49 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/08/25 21:54:00 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ sqrt(0 * 0 + 0 * 0) > 2.0 -> either reaches 2 or max_iter reached
  * @param y position
  * @return uint32_t color in hex
  */
-uint32_t	get_iter_color(t_args *args, int x, int y)
+uint32_t	get_iter_color(t_program *fractol, t_args *args, int x, int y)
 {
 	int		iter;
 	double	z_real;
@@ -49,7 +49,7 @@ uint32_t	get_iter_color(t_args *args, int x, int y)
 		if (sqrt(z_real * z_real + z_imag * z_imag) > 2.0)
 			break ;
 	}
-	return (get_color(args, iter));
+	return (fractol->color_function(iter, args->max_iter));
 }
 
 		// iter++;
@@ -68,7 +68,7 @@ void	mandelbrot(t_program *fractol)
 	while (y < HEIGHT)
 	{
 		mlx_put_pixel(fractol->img, x, y, 
-			get_iter_color(&(fractol->pargs), x, y));
+			get_iter_color(fractol, &(fractol->pargs), x, y));
 		x++;
 		if (x == WIDTH)
 		{

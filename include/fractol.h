@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 10:30:59 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/20 21:36:33 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/08/26 11:19:41 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
  */
 uint32_t	rgb_to_hex(uint8_t r, uint8_t g, uint8_t b);
 
-uint32_t	get_iter_color(t_args *args, int x, int y);
+// uint32_t	get_iter_color(t_args *args, int x, int y);
 uint32_t	rainbow(int iterations, int max_iterations);
 
 /**
@@ -50,7 +50,6 @@ uint32_t	rainbow(int iterations, int max_iterations);
  */
 uint32_t	get_color(t_args *args, int iter);
 
-
 /* input/output */
 
 int32_t main(int argc, char **argv);
@@ -60,7 +59,7 @@ void	init_input(int argc, char **argv, t_program *fractol);
 
 void	mandelbrot(t_program *fractol);
 void	julia(t_program *fractol);
-void	define_set(char *set, t_program *fractol);
+void	define_set(char *set, t_program *args);
 
 /* utils */
 
