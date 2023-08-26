@@ -6,80 +6,61 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 19:57:19 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/26 11:39:18 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/08/26 22:32:26 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-/**
- * @brief 
- * 
- * @param fractol 
- */
-// void	julia(t_program *fractol)
-// {
-// 	(void)fractol;
-// 	return ;
-// }
+static uint32_t	calculate_julia_color(t_args *args, double x, double y)
+{
+	t_julia	j;
 
+	j.iterations = -1;
+	j.zx = args->xmin 
+		+ (x * ((args->xmax - args->xmin)
+				/ WIDTH));
+	j.zy = args->ymin 
+		+ (y * ((args->ymax - args->ymin)
+				/ HEIGHT));
+	while (++j.iterations < args->max_iterations)
+	{
+		j.new = j.zx * j.zx - j.zy * j.zy + args->j_real_num;
+		j.zy = 2 * j.zx * j.zy + args->j_img_num;
+		j.zx = j.new;
+		if (sqrt(j.zx * j.zx + j.zy * j.zy) > 4.0)
+			break ;
+	}
+	return (args->color_function(j.iterations, args->max_iterations));
+}
 
-// static int	getiteration(double x, double y, t_args *args);
+void	julia(t_args *args)
+{
+	int		x;
+	int		y;
 
-// void	julia(t_program *fractol)
-// {
-// 	int		x;
-// 	int		y;
-// 	int		pxlval;
-
-// 	x = 0;
-// 	y = 0;
-// 	while (y < HEIGHT)
-// 	{
-// 		pxlval = getiteration(fractol->pargs.xmin
-// 				+ (x * ((fractol->pargs.xmax - fractol->pargs.xmin) / WIDTH)),
-// 				fractol->pargs.ymin + (y * ((fractol->pargs.ymax - fractol->pargs.ymin) / HEIGHT)),
-// 				 &(fractol->pargs));
-// 		mlx_put_pixel(fractol->img, x, y, get_color(&(fractol->pargs), pxlval));
-// 		x++;
-// 		if (x == WIDTH)
-// 		{
-// 			x = 0;
-// 			y++;
-// 		}
-// 	}
-// 	return ;
-// }
+	x = 0;
+	y = 0;
+	while (y < HEIGHT)
+	{
+		mlx_put_pixel(args->img, x, y, calculate_julia_color(args, x, y));
+		x++;
+		if (x == WIDTH)
+		{
+			x = 0;
+			y++;
+		}
+	}
+	return ;
+}
 
 /*
 basically similar to mandelbrot set, with some differences
 
-- using z_real as x, z_img as y, limiting the sqrt result to 4
+- using j.zx as x, z_img as y, limiting the sqrt result to 4
 
 - using the input variables of j_real & j_imag (0.6 and -0.6 default)
 
 - most important visualization step is color scheme
 
 */
-
-// static int	getiteration(double x, double y, t_args *args)
-// {
-// 	double	zreal;
-// 	double	zimg;
-// 	double	temp;
-// 	int		iter;
-
-// 	iter = 0;
-// 	zreal = x;
-// 	zimg = y;
-// 	while (iter < args->max_iter)
-// 	{
-// 		temp = zreal * zreal - zimg * zimg + args->j_real_num;
-// 		zimg = 2 * zreal * zimg + args->j_img_num;
-// 		zreal = temp;
-// 		if (sqrt(zreal * zreal + zimg * zimg) > 4)
-// 			break ;
-// 		iter++;
-// 	}
-// 	return (iter);
-// }

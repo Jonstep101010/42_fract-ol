@@ -1,16 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 20:04:14 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/26 16:58:21 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/08/26 22:31:52 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+/**
+ * @brief set default values for fractal creation
+ * @follow-up values missing (structs.h)
+ * @param fractol 
+ */
+static void	set_default_values(t_program *fractol)
+{
+	fractol->args.set = NO_INIT;
+	fractol->set_function = mandelbrot;
+	fractol->args.color = NO_COLOR;
+	fractol->args.color_function = rainbow;
+	fractol->args.max_iterations = MAX_ITER;
+	fractol->args.xmin = -2;
+	fractol->args.xmax = 2;
+	fractol->args.ymin = -2;
+	fractol->args.ymax = 2;
+	fractol->args.j_real_num = 0.6;
+	fractol->args.j_img_num = -0.6;
+}
 
 /**
  * @brief matches function pointer to set
@@ -21,8 +41,8 @@ static void	user_set(char *set, t_program *fractol)
 		help_page();
 	else if (boolcmp(set, "mandelbrot"))
 		fractol->set_function = mandelbrot;
-	// else if (boolcmp(set, "julia"))
-	// 	fractol->set_function = julia;
+	else if (boolcmp(set, "julia"))
+		fractol->set_function = julia;
 	else if (boolcmp(set, "burning_ship"))
 		fractol->set_function = mandelbrot;
 	else
@@ -31,10 +51,9 @@ static void	user_set(char *set, t_program *fractol)
 }
 
 /**
- * @brief 
- * errors on multiple color inputs
- * @param fractol 
- * @param color 
+ * @brief matches function pointer to color scheme
+ * @details errors on multiple color inputs
+ * @param color scheme name
  */
 static void	user_color(t_args *args, char *color)
 {
@@ -50,16 +69,16 @@ static void	user_color(t_args *args, char *color)
 }
 
 //@todo add input for julia set
-static void	user_vals(int argc, char **argv, t_program *fractol)
+static void	get_user_input(int argc, char **argv, t_program *fractol)
 {
 	int	i;
 
 	i = 1;
 	while (i < argc)
 	{
-		if (boolcmp(argv[i], "iter:") && fractol->args.max_iter == MAX_ITER
-			&& ft_atoi(argv[i] + 5) > 0)
-			fractol->args.max_iter = ft_atoi(argv[i] + 5);
+		if (boolcmp(argv[i], "iter:") && fractol->args.max_iterations
+			 == MAX_ITER && ft_atoi(argv[i] + 5) > 0)
+			fractol->args.max_iterations = ft_atoi(argv[i] + 5);
 		else if (boolcmp(argv[i], "mandelbrot") || boolcmp(argv[i], "julia"))
 			user_set(argv[i], fractol);
 		else if (boolcmp(argv[i], "rainbow"))
@@ -75,12 +94,12 @@ static void	user_vals(int argc, char **argv, t_program *fractol)
  * @brief parse user input
  * errors on help page
  */
-void	init_input(int argc, char **argv, t_program *fractol)
+void	initialize_input(int argc, char **argv, t_program *fractol)
 {
-	default_vals(fractol);
+	set_default_values(fractol);
 	if (argc == 1)
 		return ;
 	if (argc == 2 && boolcmp(argv[1], "help"))
 		help_page();
-	user_vals(argc, argv, fractol);
+	get_user_input(argc, argv, fractol);
 }

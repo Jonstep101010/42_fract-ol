@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 10:30:12 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/26 11:54:18 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/08/26 22:33:31 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int32_t	main(int argc, char **argv)
 	t_args		*args;
 
 	args = &(fractol.args);
-	init_input(argc, argv, &fractol);
+	initialize_input(argc, argv, &fractol);
 	args->mlx = mlx_init(WIDTH, HEIGHT, "fract-ol", true);
 	if (!args->mlx)
 		exit(EXIT_FAILURE);
