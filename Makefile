@@ -26,7 +26,7 @@ VPATH		:= src/ src/sets src/utils src/io src/color
 
 SRC			:= fractol.c
 SRC_IO		:= initialize.c help_page.c 
-SRC_SETS	:= mandelbrot.c julia.c
+SRC_SETS	:= mandelbrot.c julia.c burning_ship.c
 SRC_COLOR	:= rainbow.c rgb_to_hex.c
 SRC_UTILS	:= boolcmp.c str_tolower.c
 

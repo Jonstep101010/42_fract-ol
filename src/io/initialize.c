@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 20:04:14 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/26 22:31:52 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/08/26 23:24:15 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	user_set(char *set, t_program *fractol)
 	else if (boolcmp(set, "julia"))
 		fractol->set_function = julia;
 	else if (boolcmp(set, "burning_ship"))
-		fractol->set_function = mandelbrot;
+		fractol->set_function = burning_ship;
 	else
 		return ;
 	fractol->args.set = init_set;
@@ -77,9 +77,10 @@ static void	get_user_input(int argc, char **argv, t_program *fractol)
 	while (i < argc)
 	{
 		if (boolcmp(argv[i], "iter:") && fractol->args.max_iterations
-			 == MAX_ITER && ft_atoi(argv[i] + 5) > 0)
+			== MAX_ITER && ft_atoi(argv[i] + 5) > 0)
 			fractol->args.max_iterations = ft_atoi(argv[i] + 5);
-		else if (boolcmp(argv[i], "mandelbrot") || boolcmp(argv[i], "julia"))
+		else if (boolcmp(argv[i], "mandelbrot") || boolcmp(argv[i], "julia")
+			|| boolcmp(argv[i], "burning_ship"))
 			user_set(argv[i], fractol);
 		else if (boolcmp(argv[i], "rainbow"))
 			user_color(&(fractol->args), argv[i]);

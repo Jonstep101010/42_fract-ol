@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 10:30:59 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/26 22:32:40 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/08/26 23:20:40 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void		mandelbrot(t_args *fractol);
  * @param args 
  */
 void		julia(t_args *args);
+
+void		burning_ship(t_args *args);
 
 /* utils */
 
