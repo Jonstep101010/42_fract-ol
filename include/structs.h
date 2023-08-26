@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 17:45:04 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/26 11:36:49 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/08/26 12:36:00 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef enum e_status
 }	t_status;
 
 /**
- * @follow-up zoom (in, out), move (x, y)
+ * @follow-up zoom (in, out), move (x, y), (close ?)
  * 
  */
 typedef	struct s_args 
@@ -42,13 +42,13 @@ typedef	struct s_args
 	double	ymax;
 	double	j_img_num;
 	double	j_real_num;
+	uint32_t	(*color_function)(int iter, int max_iter);
 }	t_args;
 
 typedef struct s_program
 {
 	t_args		args;
 	void		(*set_function)(t_args *args);
-	uint32_t	(*color_function)(int iter, int max_iter);
 }	t_program;
 
 #endif

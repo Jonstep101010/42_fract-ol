@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   define_set.c                                       :+:      :+:    :+:   */
+/*   help_page.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/26 11:46:07 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/26 12:37:22 by jschwabe         ###   ########.fr       */
+/*   Created: 2023/08/26 12:34:00 by jschwabe          #+#    #+#             */
+/*   Updated: 2023/08/26 12:34:50 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-/**
- * @brief call for Mandelbrot/Julia set
+/**@note help page for printing out file?
+ * @brief print out help page for user (undefined/incorrect)
  * 
  */
-void	define_set(char *set, t_program *fractol)
+void	help_page(void)
 {
-	if (fractol->args.set != NO_INIT)
-		return ;
-	else if (boolcmp(set, "mandelbrot"))
-		fractol->set_function = mandelbrot;
-	// else if (boolcmp(set, "julia"))
-	// 	fractol->set_function = julia;
-	else if (boolcmp(set, "burning_ship"))
-		fractol->set_function = mandelbrot;
-	else
-		fractol->set_function = mandelbrot;
-	fractol->args.set = init_set;
+	ft_printf("This will be our manual\n");
+	exit(EXIT_FAILURE);
 }

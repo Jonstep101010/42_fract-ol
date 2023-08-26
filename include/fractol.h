@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 10:30:59 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/26 11:40:16 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/08/26 12:35:21 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # ifndef HEIGHT
 #  define HEIGHT 1024
 # endif
+
+# define MAX_ITER 30
 
 /* color */
 
@@ -53,13 +55,14 @@ uint32_t	rainbow(int iterations, int max_iterations);
 /* input/output */
 
 int32_t main(int argc, char **argv);
+void	help_page(void);
 void	init_input(int argc, char **argv, t_program *fractol);
 
 /* sets */
 
-void	mandelbrot(t_program *fractol);
+void	mandelbrot(t_args *fractol);
 // void	julia(t_program *fractol);
-void	define_set(char *set, t_program *args);
+void	define_set(char *set, t_program *fractol);
 
 /* utils */
 

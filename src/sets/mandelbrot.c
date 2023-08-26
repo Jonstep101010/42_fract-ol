@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 19:57:55 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/26 11:38:41 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/08/26 12:20:10 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ sqrt(0 * 0 + 0 * 0) > 2.0 -> either reaches 2 or max_iter reached
  * @param y position
  * @return uint32_t color in hex
  */
-uint32_t	get_iter_color(t_program *fractol, t_args *args, int x, int y)
+uint32_t	get_iter_color(t_args *args, int x, int y)
 {
 	int		iter;
 	double	z_real;
@@ -49,7 +49,7 @@ uint32_t	get_iter_color(t_program *fractol, t_args *args, int x, int y)
 		if (sqrt(z_real * z_real + z_imag * z_imag) > 2.0)
 			break ;
 	}
-	return (fractol->color_function(iter, args->max_iter));
+	return (args->color_function(iter, args->max_iter));
 }
 
 		// iter++;
@@ -58,7 +58,7 @@ uint32_t	get_iter_color(t_program *fractol, t_args *args, int x, int y)
  * @follow-up zooming in and out
  * color function through iter && passing real, imag, max_iter
  */
-void	mandelbrot(t_program *fractol)
+void	mandelbrot(t_args *args)
 {
 	int	x;
 	int	y;
@@ -67,8 +67,8 @@ void	mandelbrot(t_program *fractol)
 	y = 0;
 	while (y < HEIGHT)
 	{
-		mlx_put_pixel(fractol->args.img, x, y, 
-			get_iter_color(fractol, &(fractol->args), x, y));
+		mlx_put_pixel(args->img, x, y, 
+			get_iter_color(args, x, y));
 		x++;
 		if (x == WIDTH)
 		{
