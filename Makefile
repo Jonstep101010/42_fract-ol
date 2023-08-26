@@ -25,8 +25,8 @@ BUILD_DIR	:= .build
 VPATH		:= src/ src/sets src/utils src/io src/color
 
 SRC			:= fractol.c
-SRC_IO		:= init.c help_page.c
-SRC_SETS	:= mandelbrot.c julia.c define_set.c
+SRC_IO		:= init.c help_page.c default_vals.c
+SRC_SETS	:= mandelbrot.c julia.c
 SRC_COLOR	:= rainbow.c rgb_to_hex.c
 SRC_UTILS	:= boolcmp.c str_tolower.c
 
