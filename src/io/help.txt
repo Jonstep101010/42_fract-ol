@@ -1,0 +1,32 @@
+
+usage:
+
+./fractol [fractal] [color scheme] iter:[iterations]
+
+--> Everything besides the program name is optional and will default safely.
+
+usage julia:
+
+./fractol julia rainbow iter:100 j_real_num:0.285 j_imag_num:0.01
+
+--> arguments starting with j_ are exclusive to the julia set
+	--> these have to be passed after the fractal name
+
+fractals:
+- mandelbrot based on formula: z = z^2 + c
+- julia based on formula: z = z^2 + c with a constant c
+- burning_ship based on formula: z = |Re(z)| + i|Im(z)| + c
+
+color schemes:
+- rainbow rainbow color scheme
+- blue_gradient based on ultra fractal's blue gradient
+
+iterations:
+- iter:[number] number of iterations to calculate the fractal 
+(must be a positive integer)
+- lots of iterations can significantly impact performance
+
+example:
+"./fractol" defaults to
+
+./fractol mandelbrot rainbow iter:30

@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 10:30:59 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/30 13:46:01 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/08/30 20:57:39 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,8 @@ void		burning_ship(t_args *args);
 
 bool		boolcmp(char *argv, char *defined);
 char		*str_tolower(char *s);
+
+
+void		hooks(t_args *args);
 
 #endif

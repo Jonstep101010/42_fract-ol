@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 20:04:14 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/26 23:24:15 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/08/30 14:04:21 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ static void	get_user_input(int argc, char **argv, t_program *fractol)
 		else if (boolcmp(argv[i], "mandelbrot") || boolcmp(argv[i], "julia")
 			|| boolcmp(argv[i], "burning_ship"))
 			user_set(argv[i], fractol);
+		// else if (boolcmp(argv[i], "j_real_num") || boolcmp(argv[i], "j_imag_num"))
+		// 	validate_julia_input(argv[i], argv[i + 1], fractol);
 		else if (boolcmp(argv[i], "rainbow"))
 			user_color(&(fractol->args), argv[i]);
 		else

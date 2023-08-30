@@ -1,40 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   help_page.c                                        :+:      :+:    :+:   */
+/*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/26 12:34:00 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/30 22:18:11 by jschwabe         ###   ########.fr       */
+/*   Created: 2023/08/30 20:52:22 by jschwabe          #+#    #+#             */
+/*   Updated: 2023/08/30 21:59:36 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-#include "fcntl.h"
 
-/**@note help page for printing out file?
- * @brief print out help page for user (undefined/incorrect)
- * 
- */
-void	help_page(void)
+static int	close_window(void *param)
 {
-	int fd;
-	char	*line;
+	t_args	*args;
 
-	fd = open("./src/io/help.txt", O_RDONLY);
-	if (fd < 0)
-	{
-		perror("Error opening file");
-		exit(EXIT_FAILURE);
-	}
-	line = get_next_line(fd);
-	while (line)
-	{
-		ft_printf("%s", line);
-		free(line);
-		line = get_next_line(fd);
-	}
+	args = (t_args *)param;
 	exit(EXIT_SUCCESS);
 }
 
+static int	key_esc(int keycode, void *param)
+{
+	t_args	*args;
+
+	args = (t_args *)param;
+	if (keycode == MLX_KEY_ESCAPE)
+		close_window(param);
+	return (0);
+}
+
+void	hooks(t_args *args)
+{
+	mlx_close_hook(args->mlx, (void *)close_window, NULL);
+	mlx_key_hook(args->mlx, (void *)key_esc, NULL);
+}

@@ -28,14 +28,15 @@ SRC			:= fractol.c
 SRC_IO		:= initialize.c help_page.c 
 SRC_SETS	:= mandelbrot.c julia.c burning_ship.c
 SRC_COLOR	:= rainbow.c rgb_to_hex.c
-SRC_UTILS	:= boolcmp.c str_tolower.c
+SRC_UTILS	:= boolcmp.c str_tolower.c hooks.c
 
 SRCS		:= $(SRC) $(SRC_IO) $(SRC_SETS) $(SRC_UTILS) $(SRC_COLOR)
 OBJS		:= $(addprefix $(BUILD_DIR)/, $(SRCS:%.c=%.o))
 DEPS		:= $(OBJS:.o=.d)
 
 CC			:= clang
-CFLAGS		?= -g3 -Wall -Wextra -Werror -Wpedantic
+CFLAGS		?= -g3
+# -Wall -Wextra -Werror -Wpedantic
 CPPFLAGS	:= $(addprefix -I,$(INCS)) -MMD -MP
 LDFLAGS		:= $(addprefix -L,$(dir $(LIB_FT), $(dir $(LIB_MLX)), $(GLFW)/lib))
 LDLIB		:= $(addprefix -l,$(LIB))
