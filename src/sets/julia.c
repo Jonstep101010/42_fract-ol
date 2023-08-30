@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 19:57:19 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/26 22:32:26 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/08/30 13:49:57 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,13 @@ static uint32_t	calculate_julia_color(t_args *args, double x, double y)
 	t_julia	j;
 
 	j.iterations = -1;
-	j.zx = args->xmin 
-		+ (x * ((args->xmax - args->xmin)
-				/ WIDTH));
-	j.zy = args->ymin 
-		+ (y * ((args->ymax - args->ymin)
-				/ HEIGHT));
+	j.zx = args->xmin + (x * ((args->xmax - args->xmin) / WIDTH));
+	j.zy = args->ymin + (y * ((args->ymax - args->ymin) / HEIGHT));
 	while (++j.iterations < args->max_iterations)
 	{
-		j.new = j.zx * j.zx - j.zy * j.zy + args->j_real_num;
+		j.tmp = j.zx * j.zx - j.zy * j.zy + args->j_real_num;
 		j.zy = 2 * j.zx * j.zy + args->j_img_num;
-		j.zx = j.new;
+		j.zx = j.tmp;
 		if (sqrt(j.zx * j.zx + j.zy * j.zy) > 4.0)
 			break ;
 	}

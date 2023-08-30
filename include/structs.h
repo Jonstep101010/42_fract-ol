@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 17:45:04 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/26 22:33:07 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/08/30 13:37:15 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,6 @@
 # include "fractol.h"
 # include <ctype.h>
 # include "MLX42.h"
-
-/* variables needed in calculate_mandelbrot_color */
-typedef struct s_mandelbrot
-{
-	double	zx;
-	double	zy;
-	double	new_zx;
-	double	new_zy;
-	int		iterations;
-}	t_mandelbrot;
-
-/* variables needed in calculate_julia_color */
-typedef struct s_julia
-{
-	double	zx;
-	double	zy;
-	double	new;
-	int		iterations;
-}	t_julia;
 
 typedef enum e_color
 {

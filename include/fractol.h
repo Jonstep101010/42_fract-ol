@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 10:30:59 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/26 23:20:40 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/08/30 13:46:01 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FRACTOL_H
 
 # include "structs.h"
+# include "color.h"
 # include "libft.h"
 # include <math.h>
 # include "MLX42.h"
@@ -28,6 +29,7 @@
 # define MAX_ITER 30
 
 /* color */
+//@todo add color sets
 
 /**
  * @brief convert rgb to hex using bitwise operators
@@ -51,22 +53,11 @@ void		initialize_input(int argc, char **argv, t_program *fractol);
 /* sets */
 
 /**
- * @brief calculate number of operations & pass to color_function
- * @return uint32_t color in hex (return of function)
- */
-// static 
-// uint32_t	calculate_mandelbrot_color(t_args *args, double cx, double cy);
-/**
  * @brief generates mandelbort fractal
  * @follow-up zooming in and out
  */
 void		mandelbrot(t_args *fractol);
 
-/**
- * @brief calculate using julia formula
- * @return uint32_t of color_function (pointer)
- */
-// static uint32_t	calculate_julia_color(t_args *args, double x, double y);
 /**
  * @brief generates julia fractal
  * @follow-up zooming in and out
@@ -74,6 +65,11 @@ void		mandelbrot(t_args *fractol);
  */
 void		julia(t_args *args);
 
+/**
+ * @brief generates burning_ship fractal
+ * @follow-up zooming in and out
+ * @param args 
+ */
 void		burning_ship(t_args *args);
 
 /* utils */
