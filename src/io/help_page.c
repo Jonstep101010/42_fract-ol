@@ -6,20 +6,20 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 12:34:00 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/30 22:18:11 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/08/30 22:40:58 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include "fcntl.h"
 
-/**@note help page for printing out file?
+/**
  * @brief print out help page for user (undefined/incorrect)
  * 
  */
 void	help_page(void)
 {
-	int fd;
+	int		fd;
 	char	*line;
 
 	fd = open("./src/io/help.txt", O_RDONLY);
@@ -37,4 +37,3 @@ void	help_page(void)
 	}
 	exit(EXIT_SUCCESS);
 }
-

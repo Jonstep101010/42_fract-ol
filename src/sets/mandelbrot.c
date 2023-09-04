@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 19:57:55 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/30 13:40:30 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/02 14:16:09 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,13 @@ static uint32_t	m_calculate_color(t_args *args, double cx, double cy)
 {
 	t_mandelbrot	m;
 
+	m.max_iterations = args->max_iterations * (args->zoom * args->zoom);
 	m.iterations = -1;
 	m.zx = 0.0;
 	m.zy = 0.0;
 	cx = (args->xmin + (cx * (args->xmax - args->xmin) / WIDTH));
 	cy = (args->ymin + (cy * (args->ymax - args->ymin) / HEIGHT));
-	while (++m.iterations < args->max_iterations)
+	while (++m.iterations < m.max_iterations)
 	{
 		m.tmp_zx = m.zx * m.zx - m.zy * m.zy + cx;
 		m.tmp_zy = 2.0 * m.zx * m.zy + cy;
@@ -51,7 +52,7 @@ static uint32_t	m_calculate_color(t_args *args, double cx, double cy)
 		if (sqrt(m.zx * m.zx + m.zy * m.zy) > 2.0)
 			break ;
 	}
-	return (args->color_function(m.iterations, args->max_iterations));
+	return (args->color_function(m.iterations, m.max_iterations));
 }
 
 /*

@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 23:17:14 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/30 13:40:14 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/04 11:03:16 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static uint32_t	bs_calculate_color(t_args *args, double cx, double cy)
 {
 	t_burning_ship	b;
 
+	b.max_iterations = args->max_iterations * (args->zoom * args->zoom);
 	b.iterations = -1;
 	b.zx = 0.0;
 	b.zy = 0.0;

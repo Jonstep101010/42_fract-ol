@@ -6,16 +6,38 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 19:57:19 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/30 13:54:12 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/04 11:01:38 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static uint32_t	calculate_julia_color(t_args *args, double x, double y)
+static uint32_t	j_calculate_color(t_args *args, double x, double y);
+
+void	julia(t_args *args)
+{
+	int		x;
+	int		y;
+
+	x = 0;
+	y = 0;
+	while (y < HEIGHT)
+	{
+		mlx_put_pixel(args->img, x, y, j_calculate_color(args, x, y));
+		x++;
+		if (x == WIDTH)
+		{
+			x = 0;
+			y++;
+		}
+	}
+}
+
+static uint32_t	j_calculate_color(t_args *args, double x, double y)
 {
 	t_julia	j;
 
+	j.max_iterations = args->max_iterations * (args->zoom * args->zoom);
 	j.iterations = -1;
 	j.zx = args->xmin + (x * ((args->xmax - args->xmin) / WIDTH));
 	j.zy = args->ymin + (y * ((args->ymax - args->ymin) / HEIGHT));
@@ -29,26 +51,6 @@ static uint32_t	calculate_julia_color(t_args *args, double x, double y)
 	}
 	return (args->color_function(j.iterations, args->max_iterations));
 }
-
-void	julia(t_args *args)
-{
-	int		x;
-	int		y;
-
-	x = 0;
-	y = 0;
-	while (y < HEIGHT)
-	{
-		mlx_put_pixel(args->img, x, y, calculate_julia_color(args, x, y));
-		x++;
-		if (x == WIDTH)
-		{
-			x = 0;
-			y++;
-		}
-	}
-}
-
 /*
 basically similar to mandelbrot set, with some differences
 
