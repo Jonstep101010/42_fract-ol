@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 17:45:04 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/30 13:37:15 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/05 18:33:57 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,18 @@ typedef enum e_set
  */
 typedef struct s_args 
 {
+	double		zoom_factor;
+	double		zoom;
+
+	double		zoom_in;
+	double		zoom_out;
+
+	bool		scroll_zoom;
+	bool		keys_move;
+
+	long double	xmove;
+	long double	ymove;
+
 	mlx_t		*mlx;
 	mlx_image_t	*img;
 	t_set		set;
@@ -53,6 +65,7 @@ typedef struct s_program
 {
 	t_args		args;
 	void		(*set_function)(t_args *args);
+	void		(*move_keys)(t_args *args, void (*set_function));
 }	t_program;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 10:30:59 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/30 22:36:48 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/04 18:09:40 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # define MAX_ITER 30
 
 /* color */
-//@todo add color sets
+//@todo add color sets blue_gradient, india, tuvalu (maybe intergrad)
 
 /**
  * @brief convert rgb to hex using bitwise operators
@@ -77,6 +77,7 @@ void		burning_ship(t_args *args);
 bool		boolcmp(char *argv, char *defined);
 char		*str_tolower(char *s);
 
-void		hooks(t_args *args);
+void		move_keys(t_args *args, void (*set_function));
+void		hooks(t_program *fractol);
 
 #endif

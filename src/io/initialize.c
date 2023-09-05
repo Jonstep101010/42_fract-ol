@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 20:04:14 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/30 14:04:21 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/05 17:27:32 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ static void	set_default_values(t_program *fractol)
 	fractol->args.color = NO_COLOR;
 	fractol->args.color_function = rainbow;
 	fractol->args.max_iterations = MAX_ITER;
+	fractol->args.scroll_zoom = true;
+	fractol->args.zoom = 1;
+	fractol->args.zoom_factor = 1;
+	fractol->move_keys = move_keys;
+	fractol->args.xmove = 0;
+	fractol->args.ymove = 0;
 	fractol->args.xmin = -2;
 	fractol->args.xmax = 2;
 	fractol->args.ymin = -2;
@@ -68,7 +74,7 @@ static void	user_color(t_args *args, char *color)
 	args->color = init_color;
 }
 
-//@todo add input for julia set
+//@todo add input for julia set (j_real_num, j_img_num)
 static void	get_user_input(int argc, char **argv, t_program *fractol)
 {
 	int	i;
@@ -93,7 +99,6 @@ static void	get_user_input(int argc, char **argv, t_program *fractol)
 }
 
 /**
- * @follow-up move set definition out of function?
  * @brief parse user input
  * errors on help page
  */
