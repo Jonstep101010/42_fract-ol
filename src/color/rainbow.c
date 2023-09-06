@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 21:08:08 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/26 22:33:16 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/06 21:04:06 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,3 @@ uint32_t	rainbow(int iterations, int max_iterations)
 	else
 		return (rgb_to_hex(255, 0, 24));
 }
-
-//red center (228, 3, 3)
-//purple (base) (115, 41, 130)
-//blue (36, 64, 142)
-//green -> far from center (0, 128, 38)
-//yellow -> further from center (235, 237, 0)
-//orange lining (close to red) (255, 140, 0)
-//red center

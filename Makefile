@@ -27,7 +27,7 @@ VPATH		:= src/ src/sets src/utils src/io src/color
 SRC			:= fractol.c
 SRC_IO		:= initialize.c help_page.c user_input.c
 SRC_SETS	:= mandelbrot.c julia.c burning_ship.c
-SRC_COLOR	:= rainbow.c rgb_to_hex.c
+SRC_COLOR	:= rainbow.c rgb_to_hex.c ultra.c
 SRC_UTILS	:= boolcmp.c str_tolower.c hooks.c move_image.c zoom.c set_keys.c
 
 SRCS		:= $(SRC) $(SRC_IO) $(SRC_SETS) $(SRC_UTILS) $(SRC_COLOR)

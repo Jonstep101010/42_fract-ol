@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:19:57 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/20 21:00:17 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/06 21:08:05 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,47 +93,8 @@ int32_t main(int32_t argc, const char* argv[])
 	return (EXIT_SUCCESS);
 }
 
-
-// Bytes Per Pixel. Since each pixel is represented as an integer, it will be four bytes for four channels.
-#define BPP sizeof(int32_t)
-
-int32_t	main(void)
-{
-    // Init mlx with a canvas size of 256x256 and the ability to resize the window.
-    mlx_t* mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true);
-    
-    if (!mlx) exit(EXIT_FAILURE);
-
-    // Create a 128x128 image.
-    mlx_image_t* img = mlx_new_image(mlx, WIDTH, HEIGHT);
-
-    // Set the channels of each pixel in our image to the maximum byte value of 255. 
-    // memset(img->pixels, 0xFF0000FF, img->width * img->height * BPP);
-	int x = 0;
-	int y = 0;
-	while (y < HEIGHT)
-	{
-		mlx_put_pixel(img, x, y, 0xFF0000FF);
-		x++;
-		if (x == WIDTH)
-		{
-			y++;
-			x = 0;
-		}
-	}
-
-    // Draw the image at coordinate (0, 0).
-    mlx_image_to_window(mlx, img, 0, 0);
-
-    // Run the main loop and terminate on quit.  
-    mlx_loop(mlx);
-    mlx_terminate(mlx);
-
-    return (EXIT_SUCCESS);
-}
-
 // static uint32_t	getpartial(int iterations, int maxIterations,
-// 					uint32_t endcolour)//@note shifting using endcolor/bitwise
+// 					uint32_t endcolour)
 // {
 // 	double		itergrad;
 // 	uint8_t		blue;
@@ -166,42 +127,3 @@ int32_t	main(void)
 // 	else
 // 		return (getpartial(iterations, max_iterations, 0x0012FF));
 // }
-
-
-uint32_t interpolateColor(uint32_t start, uint32_t end, double factor) {
-	uint8_t r1 = (start >> 24) & 0xFF;
-	uint8_t g1 = (start >> 16) & 0xFF;
-	uint8_t b1 = (start >> 8) & 0xFF;
-
-	uint8_t r2 = (end >> 24) & 0xFF;
-	uint8_t g2 = (end >> 16) & 0xFF;
-	uint8_t b2 = (end >> 8) & 0xFF;
-
-	uint8_t r = r1 + (r2 - r1) * factor;
-	uint8_t g = g1 + (g2 - g1) * factor;
-	uint8_t b = b1 + (b2 - b1) * factor;
-
-	return (r << 24) | (g << 16) | (b << 8) | 0xFF;
-}
-
-uint32_t ultra_fractal(int iterations, int max_iterations) {
-	double position = (double)iterations / max_iterations;
-
-	uint32_t color1 = 0x000700FF;
-	uint32_t color2 = 0x206BCBFF;
-	uint32_t color3 = 0xEDFFFF00;
-	uint32_t color4 = 0xFFAA00FF;
-	uint32_t color5 = 0x000200FF;
-
-	if (position < 0.16) {
-		return interpolateColor(color1, color2, position / 0.16);
-	} else if (position < 0.42) {
-		return interpolateColor(color2, color3, (position - 0.16) / (0.42 - 0.16));
-	} else if (position < 0.6425) {
-		return interpolateColor(color3, color4, (position - 0.42) / (0.6425 - 0.42));
-	} else if (position < 0.8575) {
-		return interpolateColor(color4, color5, (position - 0.6425) / (0.8575 - 0.6425));
-	} else {
-		return color5;
-	}
-}

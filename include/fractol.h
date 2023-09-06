@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 10:30:59 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/09/06 11:48:26 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/06 17:43:19 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@
 uint32_t	rgb_to_hex(uint8_t r, uint8_t g, uint8_t b);
 
 uint32_t	rainbow(int iterations, int max_iterations);
+uint32_t	ultra_fractal(int iterations, int max_iterations);
 
 /* input/output */
 

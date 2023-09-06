@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 13:37:17 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/09/06 10:19:18 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/06 17:40:59 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "structs.h"
 
+/* @follow-up consider set struct unification */
 /* variables needed in calculating mandelbrot color */
 typedef struct s_mandelbrot
 {
