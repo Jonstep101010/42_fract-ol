@@ -1,13 +1,14 @@
 
 usage:
 
-./fractol [fractal] [color scheme] iter:[iterations]
+./fractol [fractal] [color] [iter:<iterations>]
 
 --> Everything besides the program name is optional and will default safely.
 
 usage julia:
 
-./fractol julia rainbow iter:100 j_real_num:0.285 j_imag_num:0.01
+./fractol julia [color] [iter:<iterations>] [j_real_num:<number.1f>] [j_imag_num:<number.1f>]
+./fractol julia rainbow iter:100 j_real_num:0.2 j_imag_num:0.8
 
 --> arguments starting with j_ are exclusive to the julia set
 	--> these have to be passed after the fractal name

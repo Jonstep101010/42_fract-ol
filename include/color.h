@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 13:37:17 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/09/04 11:01:00 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/06 10:19:18 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ typedef struct s_mandelbrot
 	double	zx;
 	double	zy;
 	double	tmp_zx;
-	double	tmp_zy;
 	int		iterations;
 	int		max_iterations;
 }	t_mandelbrot;

@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 19:57:55 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/09/02 14:16:09 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/06 10:18:04 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,8 @@ static uint32_t	m_calculate_color(t_args *args, double cx, double cy)
 	while (++m.iterations < m.max_iterations)
 	{
 		m.tmp_zx = m.zx * m.zx - m.zy * m.zy + cx;
-		m.tmp_zy = 2.0 * m.zx * m.zy + cy;
+		m.zy = 2.0 * m.zx * m.zy + cy;
 		m.zx = m.tmp_zx;
-		m.zy = m.tmp_zy;
 		if (sqrt(m.zx * m.zx + m.zy * m.zy) > 2.0)
 			break ;
 	}

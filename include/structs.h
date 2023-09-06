@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 17:45:04 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/09/05 18:33:57 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/06 11:52:37 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,17 @@ typedef enum e_set
 }	t_set;
 
 /**
- * @follow-up zoom (in, out), move (x, y), (close ?)
+ * @brief Struct for storing the arguments passed to the program.
  * 
  */
 typedef struct s_args 
 {
-	double		zoom_factor;
-	double		zoom;
+	long double	zoom;
 
-	double		zoom_in;
-	double		zoom_out;
+	long double	zoom_in;
+	long double	zoom_out;
 
 	bool		scroll_zoom;
-	bool		keys_move;
 
 	long double	xmove;
 	long double	ymove;
@@ -52,15 +50,18 @@ typedef struct s_args
 	t_set		set;
 	t_color		color;
 	int			max_iterations;
-	double		xmin;
-	double		xmax;
-	double		ymin;
-	double		ymax;
-	double		j_img_num;
+	long double	xmin;
+	long double	xmax;
+	long double	ymin;
+	long double	ymax;
+	double		j_imag_num;
 	double		j_real_num;
 	uint32_t	(*color_function)(int iter, int max_iter);
 }	t_args;
 
+/**
+ * @brief Struct for storing the program functions & arguments.
+ */
 typedef struct s_program
 {
 	t_args		args;
