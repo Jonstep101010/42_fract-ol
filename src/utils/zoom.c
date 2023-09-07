@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 11:37:20 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/09/06 11:43:32 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/07 20:56:06 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,5 @@ void	zoom_on_scroll(double xdelta, double ydelta, void *param)
 		move_on_scroll(args, x, y);
 	if (args->zoom < 1)
 		args->zoom = 1;
-	((t_program *)param)->set_function(args);
+	((t_program *)param)->set_function(args), (void)xdelta;
 }

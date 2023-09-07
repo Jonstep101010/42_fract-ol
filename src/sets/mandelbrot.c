@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 19:57:55 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/09/06 10:18:04 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/07 19:44:14 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static uint32_t	m_calculate_color(t_args *args, double cx, double cy)
 		if (sqrt(m.zx * m.zx + m.zy * m.zy) > 2.0)
 			break ;
 	}
-	return (args->color_function(m.iterations, m.max_iterations));
+	return (args->color_function(m.iterations, m.max_iterations, args->zoom));
 }
 
 /*

@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 13:37:17 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/09/06 17:40:59 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/07 20:52:11 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "structs.h"
 
 /* @follow-up consider set struct unification */
+/* ­@follow-up consider implementing iterators as doubles for color functions*/
 /* variables needed in calculating mandelbrot color */
 typedef struct s_mandelbrot
 {
@@ -45,5 +46,19 @@ typedef struct s_burning_ship
 	int		iterations;
 	int		max_iterations;
 }	t_burning_ship;
+
+typedef struct s_rgb
+{
+	uint8_t	r;
+	uint8_t	g;
+	uint8_t	b;
+}	t_rgb;
+
+typedef struct s_color_five
+{
+	t_rgb	colors[5];
+	double	prev_threshold[5];
+	double	thresholds[4];
+}	t_color_five;
 
 #endif

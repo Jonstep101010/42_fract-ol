@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 19:57:19 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/09/06 11:56:09 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/07 20:52:22 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ static uint32_t	j_calculate_color(t_args *args, double x, double y)
 		if (sqrt(j.zx * j.zx + j.zy * j.zy) > 4.0)
 			break ;
 	}
-	return (args->color_function(j.iterations, args->max_iterations));
+	return (args->color_function(j.iterations, args->max_iterations,
+			args->zoom));
 }
 /*
 basically similar to mandelbrot set, with some differences

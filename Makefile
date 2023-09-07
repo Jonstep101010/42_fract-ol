@@ -27,7 +27,7 @@ VPATH		:= src/ src/sets src/utils src/io src/color
 SRC			:= fractol.c
 SRC_IO		:= initialize.c help_page.c user_input.c
 SRC_SETS	:= mandelbrot.c julia.c burning_ship.c
-SRC_COLOR	:= rainbow.c rgb_to_hex.c ultra.c
+SRC_COLOR	:= rainbow.c rgb_to_hex.c ultra.c shift.c interpolate.c
 SRC_UTILS	:= boolcmp.c str_tolower.c hooks.c move_image.c zoom.c set_keys.c
 
 SRCS		:= $(SRC) $(SRC_IO) $(SRC_SETS) $(SRC_UTILS) $(SRC_COLOR)
@@ -36,13 +36,13 @@ DEPS		:= $(OBJS:.o=.d)
 
 CC			:= clang
 CFLAGS		?= -g3
-# -Wall -Wextra -Werror -Wpedantic
+# -Wall -Wextra -Werror
+# -Wpedantic
 CPPFLAGS	:= $(addprefix -I,$(INCS)) -MMD -MP
 LDFLAGS		:= $(addprefix -L,$(dir $(LIB_FT), $(dir $(LIB_MLX)), $(GLFW)/lib))
 LDLIB		:= $(addprefix -l,$(LIB))
 
-MAKEFLAGS	+= --no-print-directory
-# --silent
+MAKEFLAGS	+= --no-print-directory --silent
 
 DONE		= printf "\033[0;32m\xE2\x9C\x93\033[0m "
 

@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 20:52:22 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/09/06 11:44:58 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/07 19:49:20 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,12 @@
 
 static int	close_window(void *param)
 {
-	t_args	*args;
-
-	args = (t_args *)param;
+	(void)param;
 	exit(EXIT_SUCCESS);
 }
 
 static int	key_esc(int keycode, void *param)
 {
-	t_args	*args;
-
-	args = (t_args *)param;
 	if (keycode == MLX_KEY_ESCAPE)
 		close_window(param);
 	return (0);

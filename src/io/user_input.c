@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 11:16:07 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/09/06 20:08:25 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/07 19:48:15 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ static void	user_color(t_args *args, char *color)
 		args->color_function = rainbow;
 	else if (boolcmp(color, "ultra_fractal"))
 		args->color_function = ultra_fractal;
+	else if (boolcmp(color, "shift"))
+		args->color_function = shift;
 }
 
 static void	validate_julia_input(t_program *fractol, char *input)
@@ -72,7 +74,8 @@ void	get_user_input(int argc, char **argv, t_program *fractol)
 			&& fractol->set_function == julia)
 			validate_julia_input(fractol, argv[i]);
 		else if (boolcmp(argv[i], "rainbow")
-			|| boolcmp(argv[i], "ultra_fractal"))
+			|| boolcmp(argv[i], "ultra_fractal")
+			|| boolcmp(argv[i], "shift"))
 			user_color(&(fractol->args), argv[i]);
 		else
 			help_page();

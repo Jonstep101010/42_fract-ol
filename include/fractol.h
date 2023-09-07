@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 10:30:59 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/09/06 17:43:19 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/07 20:45:33 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
 
 /**
  * @brief convert rgb to hex using bitwise operators
- * 
+ *
  * @param r red
  * @param g green
  * @param b blue
@@ -52,8 +52,11 @@
  */
 uint32_t	rgb_to_hex(uint8_t r, uint8_t g, uint8_t b);
 
-uint32_t	rainbow(int iterations, int max_iterations);
-uint32_t	ultra_fractal(int iterations, int max_iterations);
+uint32_t	interpolate_color(t_color_five *rgb, double position);
+
+uint32_t	rainbow(int iterations, int max_iterations, long double zoom);
+uint32_t	ultra_fractal(int iterations, int max_iterations, long double zoom);
+uint32_t	shift(int iterations, int max_iterations, long double zoom);
 
 /* input/output */
 

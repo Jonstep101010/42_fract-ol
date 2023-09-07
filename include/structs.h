@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 17:45:04 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/09/06 11:52:37 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/07 19:41:56 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ typedef enum e_set
 
 /**
  * @brief Struct for storing the arguments passed to the program.
- * 
+ *
  */
-typedef struct s_args 
+typedef struct s_args
 {
 	long double	zoom;
 
@@ -56,7 +56,7 @@ typedef struct s_args
 	long double	ymax;
 	double		j_imag_num;
 	double		j_real_num;
-	uint32_t	(*color_function)(int iter, int max_iter);
+	uint32_t	(*color_function)(int iter, int max_iter, long double zoom);
 }	t_args;
 
 /**
