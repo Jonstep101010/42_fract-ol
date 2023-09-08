@@ -14,16 +14,17 @@ usage julia:
 	--> these have to be passed after the fractal name
 
 fractals:
-- mandelbrot based on formula: z = z^2 + c
-- julia based on formula: z = z^2 + c with a constant c
-- burning_ship based on formula: z = |Re(z)| + i|Im(z)| + c
+- [mandelbrot] based on formula: z = z^2 + c
+- [julia] based on formula: z = z^2 + c with a constant c
+- [burning_ship] based on formula: z = |Re(z)| + i|Im(z)| + c
 
 color schemes:
-- rainbow rainbow color scheme
-- blue_gradient based on ultra fractal's blue gradient
+- [rainbow] without any color shifts
+- [ultra_fractal] blue gradient
+- [shift] with color shifts based on zoom
 
 iterations:
-- iter:[number] number of iterations to calculate the fractal 
+- iter:[number] number of iterations to calculate the fractal
 (must be a positive integer)
 - lots of iterations can significantly impact performance
 

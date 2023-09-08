@@ -7,4 +7,4 @@ fractol
 src/tmp.c
 resources/MLX42.h
 .DS_Store
-resources/tmp.c
+resources/*

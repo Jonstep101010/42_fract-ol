@@ -1,9 +1,6 @@
 NAME		:= fractol
 .DEFAULT_GOAL := all
 
-
-MLX42		= $(LIB_MLX) -ldl -L$(GLFW)/lib -lglfw -pthread -lm
-#	$(CC) -o $(NAME) $(SOURCE) $(LIBFT) -D WIDTH=$(WIDTH) -D HEIGHT=$(HEIGHT) ./mlx/build/libmlx42.a -Iinclude -lglfw -L"/opt/homebrew/Cellar/glfw/3.3.8/lib/" -framework Cocoa -framework OpenGL -framework IOKit
 ARCH = $(shell uname -m)
 ifeq ($(ARCH), arm64)
 	GLFW = /opt/homebrew/Cellar/glfw/3.3.8/
@@ -35,16 +32,16 @@ OBJS		:= $(addprefix $(BUILD_DIR)/, $(SRCS:%.c=%.o))
 DEPS		:= $(OBJS:.o=.d)
 
 CC			:= clang
-CFLAGS		?= -g3
-# -Wall -Wextra -Werror
-# -Wpedantic
+CFLAGS		?= -g3 -Wall -Wextra -Werror #-Wpedantic
+FRAMEWORKS	:= $(addprefix -framework, $(IOKit) $(Cocoa) $(OpenGL))
 CPPFLAGS	:= $(addprefix -I,$(INCS)) -MMD -MP
-LDFLAGS		:= $(addprefix -L,$(dir $(LIB_FT), $(dir $(LIB_MLX)), $(GLFW)/lib))
-LDLIB		:= $(addprefix -l,$(LIB))
+LDFLAGS		= $(addprefix -L,"$(GLFW)/lib/")
+LDLIB		:= $(addprefix -l,"glfw")
 
 MAKEFLAGS	+= --no-print-directory --silent
 
 DONE		= printf "\033[0;32m\xE2\x9C\x93\033[0m "
+DONE_NL		= printf "\033[0;32m\xE2\x9C\x93\n\033[0m"
 
 WIDTH = 1000
 HEIGHT = 1000
@@ -60,9 +57,9 @@ $(LIB_MLX):
 
 $(NAME): $(OBJS) $(LIB_FT) $(LIB_MLX)
 	$(info creating $(NAME) executable)
-	$(CC) $(CFLAGS) $(OBJS) -D WIDTH=$(WIDTH) -D HEIGHT=$(HEIGHT) -D DEBUG=1 ./include/libft/libft.a ./include/MLX42/build/libmlx42.a -Iinclude -MMD -MP -lglfw -L"$(GLFW)/lib/" -framework Cocoa -framework OpenGL -framework IOKit -o $(NAME)
-	printf "\033[0;32m\xE2\x9C\x93\n\033[0m"
-# $(CC) $(CFLAGS) $(OBJS) -D WIDTH=1000 -D HEIGHT=1000 -D DEBUG=1 ./include/libft/libft.a ./include/MLX42/build/libmlx42.a -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -framework Cocoa -framework OpenGL -framework IOKit -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -D WIDTH=$(WIDTH) -D HEIGHT=$(HEIGHT) \
+	$(LIB_FT) $(LIB_MLX) $(CPPFLAGS) $(LDLIB) $(LDFLAGS) $(FRAMEWORKS) -pthread -o $(NAME)
+	$(DONE_NL)
 
 $(BUILD_DIR)/%.o: %.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $< && $(DONE)
@@ -75,7 +72,7 @@ clean:
 	$(info Cleaning...)
 	make -C $(dir $(LIB_FT)) clean
 	rm -rf .build
-	printf "\033[0;32m\xE2\x9C\x93\n\033[0m"
+	$(DONE_NL)
 
 fclean: clean
 	rm -fv $(LIB_FT)

@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:19:57 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/09/06 21:08:05 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/07 19:19:06 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int32_t main(int32_t argc, const char* argv[])
 		puts(mlx_strerror(mlx_errno));
 		return(EXIT_FAILURE);
 	}
-	
+
 	mlx_loop_hook(mlx, ft_randomize, mlx);
 	mlx_loop_hook(mlx, ft_hook, mlx);
 
@@ -126,4 +126,14 @@ int32_t main(int32_t argc, const char* argv[])
 // 		return (getpartial(iterations, max_iterations * (3.0 / 4.0), 0x07FF00));
 // 	else
 // 		return (getpartial(iterations, max_iterations, 0x0012FF));
+// }
+
+// static t_rgb	hex_to_rgb(uint32_t color)
+// {
+// 	t_rgb	rgb;
+
+// 	rgb.r = (color >> 24) & 0xFF;
+// 	rgb.g = (color >> 16) & 0xFF;
+// 	rgb.b = (color >> 8) & 0xFF;
+// 	return (rgb);
 // }

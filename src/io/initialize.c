@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 20:04:14 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/09/06 11:52:51 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/08 12:56:54 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 static void	set_default_values(t_program *fractol)
 {
 	fractol->set_function = mandelbrot;
-	fractol->args.color_function = rainbow;
+	fractol->args.color_function = ultra_fractal;
 	fractol->args.max_iterations = MAX_ITER;
 	fractol->args.scroll_zoom = true;
 	fractol->args.zoom = DEFAULT_ZOOM;

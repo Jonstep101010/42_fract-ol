@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 17:45:04 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/09/07 19:41:56 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/08 12:56:21 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef enum e_set
 {
 	NO_INIT,
 	init_set,
-}	t_set;
+}	t_status;
 
 /**
  * @brief Struct for storing the arguments passed to the program.
@@ -35,19 +35,18 @@ typedef enum e_set
  */
 typedef struct s_args
 {
+	bool		scroll_zoom;
 	long double	zoom;
-
 	long double	zoom_in;
 	long double	zoom_out;
-
-	bool		scroll_zoom;
 
 	long double	xmove;
 	long double	ymove;
 
 	mlx_t		*mlx;
 	mlx_image_t	*img;
-	t_set		set;
+
+	t_status	set;
 	t_color		color;
 	int			max_iterations;
 	long double	xmin;

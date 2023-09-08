@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 13:37:17 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/09/07 20:52:11 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/08 12:55:15 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,35 +17,15 @@
 
 /* @follow-up consider set struct unification */
 /* ­@follow-up consider implementing iterators as doubles for color functions*/
-/* variables needed in calculating mandelbrot color */
-typedef struct s_mandelbrot
-{
-	double	zx;
-	double	zy;
-	double	tmp_zx;
-	int		iterations;
-	int		max_iterations;
-}	t_mandelbrot;
-
-/* variables needed in calculating julia color */
-typedef struct s_julia
+/* variables needed in calculating colors for sets */
+typedef struct s_set
 {
 	double	zx;
 	double	zy;
 	double	tmp;
 	int		iterations;
 	int		max_iterations;
-}	t_julia;
-
-/* variables needed in calculating burning_ship color */
-typedef struct s_burning_ship
-{
-	double	zx;
-	double	zy;
-	double	tmp;
-	int		iterations;
-	int		max_iterations;
-}	t_burning_ship;
+}	t_set;
 
 typedef struct s_rgb
 {

@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 19:57:55 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/09/07 19:44:14 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/08 12:53:16 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	mandelbrot(t_args *args)
 
 static uint32_t	m_calculate_color(t_args *args, double cx, double cy)
 {
-	t_mandelbrot	m;
+	t_set	m;
 
 	m.max_iterations = args->max_iterations * (args->zoom * args->zoom);
 	m.iterations = -1;
@@ -45,9 +45,9 @@ static uint32_t	m_calculate_color(t_args *args, double cx, double cy)
 	cy = (args->ymin + (cy * (args->ymax - args->ymin) / HEIGHT));
 	while (++m.iterations < m.max_iterations)
 	{
-		m.tmp_zx = m.zx * m.zx - m.zy * m.zy + cx;
+		m.tmp = m.zx * m.zx - m.zy * m.zy + cx;
 		m.zy = 2.0 * m.zx * m.zy + cy;
-		m.zx = m.tmp_zx;
+		m.zx = m.tmp;
 		if (sqrt(m.zx * m.zx + m.zy * m.zy) > 2.0)
 			break ;
 	}

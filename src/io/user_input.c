@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 11:16:07 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/09/07 19:48:15 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/08 12:57:33 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	user_set(char *set, t_program *fractol)
  */
 static void	user_color(t_args *args, char *color)
 {
-	if (args->color_function != rainbow)
+	if (args->color_function != ultra_fractal)
 		help_page();
 	else if (boolcmp(color, "rainbow"))
 		args->color_function = rainbow;

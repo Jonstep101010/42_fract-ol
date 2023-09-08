@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 19:57:19 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/09/07 20:52:22 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/08 12:52:43 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	julia(t_args *args)
 
 static uint32_t	j_calculate_color(t_args *args, double x, double y)
 {
-	t_julia	j;
+	t_set	j;
 
 	j.max_iterations = args->max_iterations * (args->zoom * args->zoom);
 	j.iterations = -1;
