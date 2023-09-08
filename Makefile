@@ -1,5 +1,7 @@
-NAME		:= fractol
+NAME		  := fractol
 .DEFAULT_GOAL := all
+
+# ---------------------------- handle architecture --------------------------- #
 
 ARCH = $(shell uname -m)
 ifeq ($(ARCH), arm64)
@@ -7,6 +9,8 @@ ifeq ($(ARCH), arm64)
 else ifeq ($(ARCH), i386 | x86_64)
 	GLFW = /Users/$(USER)/.brew/Cellar/glfw/3.3.8/
 endif
+
+# --------------------------------- includes --------------------------------- #
 
 INCS		= ./include \
 				./include/libft/include \
@@ -19,6 +23,10 @@ LIB_MLX		:= include/MLX42/build/libmlx42.a
 
 BUILD_DIR	:= .build
 
+# ---------------------------------------------------------------------------- #
+#                                 source files                                 #
+# ---------------------------------------------------------------------------- #
+
 VPATH		:= src/ src/sets src/utils src/io src/color
 
 SRC			:= fractol.c
@@ -28,6 +36,11 @@ SRC_COLOR	:= rainbow.c rgb_to_hex.c ultra.c shift.c interpolate.c
 SRC_UTILS	:= boolcmp.c str_tolower.c hooks.c move_image.c zoom.c set_keys.c
 
 SRCS		:= $(SRC) $(SRC_IO) $(SRC_SETS) $(SRC_UTILS) $(SRC_COLOR)
+
+# ---------------------------------------------------------------------------- #
+#                             compilation arguments                            #
+# ---------------------------------------------------------------------------- #
+
 OBJS		:= $(addprefix $(BUILD_DIR)/, $(SRCS:%.c=%.o))
 DEPS		:= $(OBJS:.o=.d)
 
@@ -45,6 +58,10 @@ DONE_NL		= printf "\033[0;32m\xE2\x9C\x93\n\033[0m"
 
 WIDTH = 1000
 HEIGHT = 1000
+
+# ---------------------------------------------------------------------------- #
+#                             building the program                             #
+# ---------------------------------------------------------------------------- #
 
 all: $(NAME)
 
@@ -67,6 +84,10 @@ $(BUILD_DIR)/%.o: %.c | $(BUILD_DIR)
 #info $($<)
 $(BUILD_DIR):
 	mkdir -p .build
+
+# ---------------------------------------------------------------------------- #
+#                                     rules                                    #
+# ---------------------------------------------------------------------------- #
 
 clean:
 	$(info Cleaning...)
