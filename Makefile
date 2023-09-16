@@ -5,7 +5,7 @@ NAME		  := fractol
 
 ARCH = $(shell uname -m)
 ifeq ($(ARCH), arm64)
-	GLFW = /opt/homebrew/Cellar/glfw/3.3.8/
+	GLFW = /opt/homebrew/Cellar/glfw/3.3.8/lib/
 else ifeq ($(ARCH), i386 | x86_64)
 	GLFW = /Users/$(USER)/.brew/Cellar/glfw/3.3.8/
 endif
@@ -48,7 +48,7 @@ CC			:= clang
 CFLAGS		?= -g3 -Wall -Wextra -Werror #-Wpedantic
 FRAMEWORKS	:= $(addprefix -framework, $(IOKit) $(Cocoa) $(OpenGL))
 CPPFLAGS	:= $(addprefix -I,$(INCS)) -MMD -MP
-LDFLAGS		= $(addprefix -L,"$(GLFW)/lib/")
+LDFLAGS		:= $(addprefix -L,$(GLFW))
 LDLIB		:= $(addprefix -l,"glfw")
 
 MAKEFLAGS	+= --no-print-directory --silent
@@ -63,7 +63,7 @@ HEIGHT = 1000
 #                             building the program                             #
 # ---------------------------------------------------------------------------- #
 
-all: $(NAME)
+all: update $(NAME)
 
 $(LIB_FT):
 	$(MAKE) -C $(@D) -B
@@ -81,7 +81,7 @@ $(NAME): $(OBJS) $(LIB_FT) $(LIB_MLX)
 $(BUILD_DIR)/%.o: %.c | $(BUILD_DIR)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $< && $(DONE)
 	echo $(notdir $<)
-#info $($<)
+
 $(BUILD_DIR):
 	mkdir -p .build
 
@@ -89,37 +89,24 @@ $(BUILD_DIR):
 #                                     rules                                    #
 # ---------------------------------------------------------------------------- #
 
-clean:
+clean: $(MAKE)
 	$(info Cleaning...)
-	make -C $(dir $(LIB_FT)) clean
-	rm -rf .build
-	$(DONE_NL)
+	make -C $(dir $(LIB_FT)) clean; rm -rf .build; $(DONE_NL)
 
 fclean: clean
-	rm -fv $(LIB_FT)
-	rm -fv $(LIB_MLX)
-	rm -f $(NAME)
+	rm -fv $(LIB_FT); rm -fv $(LIB_MLX); rm -fv $(NAME);
 
-update: fclean
-	git submodule update --init
-# git stash
-# git pull
-# git stash pop
+update:
+	git submodule update --init --recursive
 
 re:
-	$(MAKE) fclean
-	$(MAKE) all
+	$(MAKE) fclean all
 
 run: all
 	./$(NAME)
 
-norme:
-	clear
-	-norminette src/ | grep Error
+norme: $(clear)
+	-norminette src/ | grep Error; norminette include/*.h | grep Error
 
-upgrade:
-	-$(MAKE) update && $(MAKE) re
-
-.PHONY: run update upgrade re
-# .SILENT:
+.PHONY: run update re clean fclean
 -include $(DEPS)

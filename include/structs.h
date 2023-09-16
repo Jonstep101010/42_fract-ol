@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 17:45:04 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/09/08 15:07:09 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/16 19:11:05 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ typedef struct s_args
 {
 	bool		scroll_zoom;
 	double		zoom;
-	long double	zoom_in;
-	long double	zoom_out;
+	double	zoom_in;
+	double	zoom_out;
 
-	long double	xmove;
-	long double	ymove;
+	double	xmove;
+	double	ymove;
 
 	mlx_t		*mlx;
 	mlx_image_t	*img;
@@ -49,10 +49,10 @@ typedef struct s_args
 	t_status	set;
 	t_color		color;
 	int			max_iterations;
-	long double	xmin;
-	long double	xmax;
-	long double	ymin;
-	long double	ymax;
+	double	xmin;
+	double	xmax;
+	double	ymin;
+	double	ymax;
 	double		j_imag_num;
 	double		j_real_num;
 	uint32_t	(*color_function)(double iter, double max_iter, double zoom);
