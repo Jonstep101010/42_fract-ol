@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 17:45:04 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/09/16 19:11:05 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/17 19:18:20 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,27 +35,27 @@ typedef enum e_set
  */
 typedef struct s_args
 {
-	bool		scroll_zoom;
-	double		zoom;
-	double	zoom_in;
-	double	zoom_out;
+	bool			scroll_zoom;
+	double			zoom;
+	double			zoom_in;
+	double			zoom_out;
 
-	double	xmove;
-	double	ymove;
+	double			xmove;
+	double			ymove;
+	mlx_t			*mlx;
+	mlx_image_t		*img;
 
-	mlx_t		*mlx;
-	mlx_image_t	*img;
-
-	t_status	set;
-	t_color		color;
-	int			max_iterations;
-	double	xmin;
-	double	xmax;
-	double	ymin;
-	double	ymax;
-	double		j_imag_num;
-	double		j_real_num;
-	uint32_t	(*color_function)(double iter, double max_iter, double zoom);
+	t_status		set;
+	t_color			color;
+	int				max_iterations;
+	double			xmin;
+	double			xmax;
+	double			ymin;
+	double			ymax;
+	double			j_imag_num;
+	double			j_real_num;
+	unsigned int	(*color_function)(double iter, \
+		double max_iter, double zoom);
 }	t_args;
 
 /**
