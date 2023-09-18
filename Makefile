@@ -106,7 +106,7 @@ run: all
 	./$(NAME)
 
 norme: $(clear)
-	-norminette src/ | grep Error; norminette include/*.h | grep Error
+	-norminette src/ | grep Error; norminette include/*.h | grep Error; norminette include/libft | grep Error
 
 .PHONY: run update re clean fclean
 -include $(DEPS)

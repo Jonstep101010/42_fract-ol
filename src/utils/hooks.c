@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 20:52:22 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/09/18 11:38:30 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/18 13:04:19 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	key_press(mlx_key_data_t keydata, void *param)
 	}
 	if (keydata.key == MLX_KEY_ESCAPE)
 		close_window(param);
-	if (keydata.key ==  MLX_KEY_HOME || keydata.key == MLX_KEY_R)
+	if (keydata.key == MLX_KEY_HOME || keydata.key == MLX_KEY_R)
 		reset_set(fractol);
 }
 
