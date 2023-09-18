@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 17:45:04 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/09/17 19:18:20 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/18 11:25:55 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ typedef enum e_set
  */
 typedef struct s_args
 {
-	bool			scroll_zoom;
 	double			zoom;
 	double			zoom_in;
 	double			zoom_out;

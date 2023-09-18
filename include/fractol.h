@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 10:30:59 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/09/08 15:28:32 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/18 11:30:31 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ char		*str_tolower(char *s);
 /* ---------------------------------- hooks --------------------------------- */
 
 void		zoom_on_scroll(double xdelta, double ydelta, void *param);
-void		set_keys(void *param);
 void		move_keys(t_args *args, void (*set_function));
 void		hooks(t_program *fractol);
 
