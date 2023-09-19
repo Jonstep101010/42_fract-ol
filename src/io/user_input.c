@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 11:16:07 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/09/19 12:31:43 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/19 19:25:52 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ static void	validate_julia_input(t_program *fractol, char *input)
 	else if (boolcmp(input, "j_imag_num:") && input + 11)
 		fractol->args.j_imag_num = atof(input + 11);
 	else
-		help_page();
-	if (fractol->args.j_imag_num <= 0 || fractol->args.j_real_num <= 0)
 		help_page();
 }
 
