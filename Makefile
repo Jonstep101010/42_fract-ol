@@ -103,7 +103,7 @@ re:
 	$(MAKE) fclean all
 
 run: all
-	./$(NAME)
+	./$(NAME) shift
 
 norme: $(clear)
 	-norminette src/ | grep Error; norminette include/*.h | grep Error; norminette include/libft | grep Error

@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 20:04:14 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/09/18 11:26:23 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/19 09:45:46 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,7 @@ static void	set_default_values(t_program *fractol)
 void	initialize_input(int argc, char **argv, t_program *fractol)
 {
 	set_default_values(fractol);
-	if (argc == 1)
-		return ;
-	if (argc == 2 && boolcmp(argv[1], "help"))
+	if ((argc == 1) || (argc == 2 && boolcmp(argv[1], "help")))
 		help_page();
 	get_user_input(argc, argv, fractol);
 }

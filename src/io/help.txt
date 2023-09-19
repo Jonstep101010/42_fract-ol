@@ -3,7 +3,7 @@ usage:
 
 ./fractol [fractal] [color] [iter:<iterations>]
 
---> Everything besides the program name is optional and will default safely.
+--> You need to provide at least one additional argument other than the program name.
 
 usage julia:
 
