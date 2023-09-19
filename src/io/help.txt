@@ -29,6 +29,6 @@ iterations:
 - lots of iterations can significantly impact performance
 
 example:
-"./fractol" defaults to
+"./fractol mandelbrot" defaults to
 
-./fractol mandelbrot rainbow iter:30
+./fractol mandelbrot ultra iter:30

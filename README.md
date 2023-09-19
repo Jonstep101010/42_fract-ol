@@ -36,7 +36,7 @@ At least one argument besides the program name is required.
 ## examples:
 ### mandelbrot or burning_ship:
 ```bash
-./fractol
+./fractol mandelbrot
 # defaults to
 ./fractol mandelbrot rainbow iter:30
 # a mandelbrot set using
