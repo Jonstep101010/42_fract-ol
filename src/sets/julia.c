@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 19:57:19 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/09/08 12:52:43 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/19 10:14:10 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ void	julia(t_args *args)
 	}
 }
 
-static uint32_t	j_calculate_color(t_args *args, double x, double y)
+static uint32_t	j_calculate_color(t_args *args, double cx, double cy)
 {
 	t_set	j;
 
 	j.max_iterations = args->max_iterations * (args->zoom * args->zoom);
 	j.iterations = -1;
-	j.zx = args->xmin + (x * ((args->xmax - args->xmin) / WIDTH));
-	j.zy = args->ymin + (y * ((args->ymax - args->ymin) / HEIGHT));
+	j.zx = args->xmin + (cx * ((args->xmax - args->xmin) / WIDTH));
+	j.zy = args->ymin + (cy * ((args->ymax - args->ymin) / HEIGHT));
 	while (++j.iterations < args->max_iterations)
 	{
 		j.tmp = j.zx * j.zx - j.zy * j.zy + args->j_real_num;
@@ -55,10 +55,11 @@ static uint32_t	j_calculate_color(t_args *args, double x, double y)
 /*
 basically similar to mandelbrot set, with some differences
 
-- using j.zx as x, z_img as y, limiting the sqrt result to 4
+- using real/imaginary numbers in place of cx/cy
 
-- using the input variables of j_real & j_imag (0.6 and -0.6 default)
+- doing the calculation before the iteration (zx/zy do not start at 0)
+
+- limiting the sqrt result to 4
 
 - most important visualization step is color scheme
-
 */

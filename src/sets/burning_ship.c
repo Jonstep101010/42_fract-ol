@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 23:17:14 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/09/08 12:52:21 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/19 10:12:28 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,3 +56,7 @@ static uint32_t	bs_calculate_color(t_args *args, double cx, double cy)
 	return (args->color_function(b.iterations,
 			args->max_iterations, args->zoom));
 }
+
+/*
+basically a mandelbrot set using fabs to get negative values
+*/
