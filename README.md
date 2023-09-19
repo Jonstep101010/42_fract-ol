@@ -3,7 +3,7 @@
 
 `./fractol` [[fractal]](#fractal) [[color]](#color-scheme) iter:<[iterations](#iterations)>
 
-Everything besides the program name is optional and will default safely.
+At least one argument besides the program name is required.
 
 ## usage julia:
 ```bash
