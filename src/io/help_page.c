@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 12:34:00 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/08/30 22:40:58 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/19 10:31:44 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ void	help_page(void)
 		free(line);
 		line = get_next_line(fd);
 	}
+	close(fd);
 	exit(EXIT_SUCCESS);
 }

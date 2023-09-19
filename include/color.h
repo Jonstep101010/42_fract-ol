@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 13:37:17 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/09/08 15:03:30 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/19 10:18:54 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "structs.h"
 
-/* variables needed in calculating colors for sets */
+/* ------------- variables needed in calculating colors for sets ------------ */
 typedef struct s_set
 {
 	double	zx;
@@ -25,7 +25,7 @@ typedef struct s_set
 	int		max_iterations;
 }	t_set;
 
-/* variables representing colors in schemes*/
+/* ---------------- variables representing colors in schemes ---------------- */
 typedef struct s_rgb
 {
 	uint8_t	r;
@@ -33,7 +33,7 @@ typedef struct s_rgb
 	uint8_t	b;
 }	t_rgb;
 
-/* variables used in color functions with shifting*/
+/* ------------- variables used in color functions with shifting ------------ */
 typedef struct s_color_five
 {
 	t_rgb	colors[5];
