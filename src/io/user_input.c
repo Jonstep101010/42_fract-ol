@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 11:16:07 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/09/08 15:08:10 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/19 12:31:43 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
  */
 static void	user_set(char *set, t_program *fractol)
 {
-	if (fractol->set_function != mandelbrot)
+	if (fractol->set_function != mandelbrot || fractol->args.set != NO_INIT)
 		help_page();
 	else if (boolcmp(set, "mandelbrot"))
 		fractol->set_function = mandelbrot;
@@ -25,6 +25,7 @@ static void	user_set(char *set, t_program *fractol)
 		fractol->set_function = julia;
 	else if (boolcmp(set, "burning_ship"))
 		fractol->set_function = burning_ship;
+	fractol->args.set = init_set;
 }
 
 /**

@@ -6,7 +6,7 @@
 /*   By: jschwabe <jschwabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 20:04:14 by jschwabe          #+#    #+#             */
-/*   Updated: 2023/09/19 09:45:46 by jschwabe         ###   ########.fr       */
+/*   Updated: 2023/09/19 12:30:53 by jschwabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
  */
 static void	set_default_values(t_program *fractol)
 {
+	fractol->args.set = NO_INIT;
 	fractol->set_function = mandelbrot;
 	fractol->args.color_function = ultra;
 	fractol->args.max_iterations = MAX_ITER;
