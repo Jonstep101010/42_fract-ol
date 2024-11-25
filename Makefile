@@ -103,15 +103,15 @@ clean: $(MAKE)
 	$(info Cleaning...)
 	make -C $(dir $(LIBFTPRINTF)) clean
 	make -C $(dir $(LIBGNL)) clean
-	make -C $(dir $(LIBFT)) clean; rm -rf .build; $(DONE_NL)
+	make -C $(dir $(LIBFT)) clean
+	rm -rf .build; $(DONE_NL)
 
 fclean: clean
 	make -C $(dir $(LIBFTPRINTF)) fclean
 	make -C $(dir $(LIBGNL)) fclean
-	rm -fv $(LIBFT); rm -fv $(LIB_MLX); rm -fv $(NAME);
-
-update:
-	git submodule update --init --recursive
+	make -C $(dir $(LIBFT)) fclean
+	rm -fv $(LIB_MLX);
+	rm -fv $(NAME);
 
 re:
 	$(MAKE) fclean all
@@ -119,8 +119,5 @@ re:
 run: all
 	./$(NAME) shift
 
-norme: $(clear)
-	-norminette src/ | grep Error; norminette include/*.h | grep Error; norminette include/libft | grep Error
-
-.PHONY: run update re clean fclean
+.PHONY: run re clean fclean
 -include $(DEPS)
