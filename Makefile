@@ -14,11 +14,13 @@ endif
 
 INCS		= ./include \
 				./include/libft/ \
+				./include/libftprintf/ \
 				./include/MLX42/include/MLX42 \
 				$(GLFW)/include
 
-LIB			:= ft m mlx42
+LIB			:= ft ftprintf m mlx42
 LIBFT		:= include/libft/libft.a
+LIBFTPRINTF	:= include/libftprintf/libftprintf.a
 LIB_MLX		:= include/MLX42/build/libmlx42.a
 
 BUILD_DIR	:= .build
@@ -66,6 +68,9 @@ HEIGHT = 1000
 all: $(NAME)
 
 $(LIBFT):
+	$(MAKE) -C $(@D) -B
+
+$(LIBFTPRINTF):
 	$(MAKE) -C $(@D) -B
 
 $(LIB_MLX):

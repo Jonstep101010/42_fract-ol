@@ -12,10 +12,11 @@
 
 #include "fractol.h"
 #include "fcntl.h"
+#include "ft_printf.h"
 
 /**
  * @brief print out help page for user (undefined/incorrect)
- * 
+ *
  */
 void	help_page(void)
 {

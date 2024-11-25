@@ -4,3 +4,6 @@
 [submodule "include/libft"]
 	path = include/libft
 	url = https://github.com/Jonstep101010/42_libft
+[submodule "include/libftprintf"]
+	path = include/libftprintf
+	url = https://github.com/Jonstep101010/42_printf
