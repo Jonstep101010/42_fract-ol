@@ -5,7 +5,7 @@ NAME		  := fractol
 
 ARCH = $(shell uname -m)
 ifeq ($(ARCH), arm64)
-	GLFW = /opt/homebrew/Cellar/glfw/3.3.8/lib/
+	GLFW = /opt/homebrew/Cellar/glfw/3.4/lib/
 else ifeq ($(ARCH), i386 | x86_64)
 	GLFW = /Users/$(USER)/.brew/Cellar/glfw/3.3.8/
 endif
@@ -40,7 +40,6 @@ SRC_COLOR	:= rainbow.c rgb_to_hex.c ultra.c shift.c interpolate.c
 SRC_UTILS	:= boolcmp.c str_tolower.c hooks.c move_image.c zoom.c
 
 SRCS		:= $(SRC) $(SRC_IO) $(SRC_SETS) $(SRC_UTILS) $(SRC_COLOR)
-
 # ---------------------------------------------------------------------------- #
 #                             compilation arguments                            #
 # ---------------------------------------------------------------------------- #
@@ -48,12 +47,12 @@ SRCS		:= $(SRC) $(SRC_IO) $(SRC_SETS) $(SRC_UTILS) $(SRC_COLOR)
 OBJS		:= $(addprefix $(BUILD_DIR)/, $(SRCS:%.c=%.o))
 DEPS		:= $(OBJS:.o=.d)
 
-CC			:= clang
-CFLAGS		?= -g3 -Wall -Wextra -Werror #-Wpedantic
+CC			:= cc
+CFLAGS		?= -g3 -Wall -Wextra -Werror
 FRAMEWORKS	:= $(addprefix -framework, $(IOKit) $(Cocoa) $(OpenGL))
 CPPFLAGS	:= $(addprefix -I,$(INCS)) -MMD -MP
-LDFLAGS		:= $(addprefix -L,$(GLFW))
-LDLIB		:= $(addprefix -l,"glfw")
+LDFLAGS		:= $(addprefix -L,$(GLFW) "include/libgnl" "include/libft" "include/libftprintf")
+LDLIB		:= $(addprefix -l,"glfw" "gnl" "ft" "ftprintf" "m")
 
 MAKEFLAGS	+= --no-print-directory --silent
 
@@ -67,25 +66,20 @@ HEIGHT = 1000
 #                             building the program                             #
 # ---------------------------------------------------------------------------- #
 
-all: $(NAME)
-
-$(LIBFT):
-	$(MAKE) -C $(@D) -B
-
-$(LIBFTPRINTF):
-	$(MAKE) -C $(@D) -B
-
-$(LIBGNL):
-	$(MAKE) -C $(@D) -B
+update:
+	git submodule update --init --recursive
+	make -C include/libft; make -C include/libgnl; make -C include/libftprintf
+	
+all: update $(NAME)
 
 $(LIB_MLX):
 	cd include/MLX42 && cmake -B build
 	cmake --build $(@D) -j4
 
-$(NAME): $(OBJS) $(LIBFT) $(LIBFTPRINTF) $(LIBGNL) $(LIB_MLX)
+$(NAME): $(OBJS) $(LIB_MLX) $(LIBS)
 	$(info creating $(NAME) executable)
 	$(CC) $(CFLAGS) $(OBJS) -D WIDTH=$(WIDTH) -D HEIGHT=$(HEIGHT) \
-	$(LIBFT) $(LIBFTPRINTF) $(LIBGNL) $(LIB_MLX) $(CPPFLAGS) $(LDLIB) $(LDFLAGS) $(FRAMEWORKS) -pthread -o $(NAME)
+	$(LIB_MLX) $(CPPFLAGS) $(LDLIB) $(LDFLAGS) $(FRAMEWORKS) -pthread -o $(NAME)
 	$(DONE_NL)
 
 $(BUILD_DIR)/%.o: %.c | $(BUILD_DIR)
@@ -99,25 +93,16 @@ $(BUILD_DIR):
 #                                     rules                                    #
 # ---------------------------------------------------------------------------- #
 
-clean: $(MAKE)
+clean:
 	$(info Cleaning...)
-	make -C $(dir $(LIBFTPRINTF)) clean
-	make -C $(dir $(LIBGNL)) clean
-	make -C $(dir $(LIBFT)) clean
-	rm -rf .build; $(DONE_NL)
+	make -C include/libft clean; make -C include/libgnl clean; rm -rf $(BUILD_DIR)
+	rm -rf include/MLX42/build; $(DONE_NL)
 
 fclean: clean
-	make -C $(dir $(LIBFTPRINTF)) fclean
-	make -C $(dir $(LIBGNL)) fclean
-	make -C $(dir $(LIBFT)) fclean
-	rm -fv $(LIB_MLX);
-	rm -fv $(NAME);
+	make -C include/libft fclean; make -C include/libgnl fclean;
+	rm -fv $(LIB_MLX); rm -fv $(NAME);
 
 re:
 	$(MAKE) fclean all
 
-run: all
-	./$(NAME) shift
-
-.PHONY: run re clean fclean
--include $(DEPS)
+.PHONY: run update re clean fclean
