@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include <math.h>
 
 static void	move_on_scroll(t_args *args, int x, int y)
 {

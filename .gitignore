@@ -9,3 +9,4 @@ resources/MLX42.h
 .DS_Store
 resources/*
 resources/
+.cache/

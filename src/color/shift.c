@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include <math.h>
 
 uint32_t	shift(double iterations, double max_iterations, double zoom)
 {

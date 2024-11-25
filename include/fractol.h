@@ -15,8 +15,7 @@
 
 # include "structs.h"
 # include "color.h"
-# include "libft.h"
-# include <math.h>
+# include <stdlib.h>
 # include "MLX42.h"
 
 /* -------------------------------------------------------------------------- */

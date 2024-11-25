@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "libft.h"
 
 /**
  * @brief convert uppercase characters in string to lowercase
- * 
+ *
  */
 char	*str_tolower(char *s)
 {

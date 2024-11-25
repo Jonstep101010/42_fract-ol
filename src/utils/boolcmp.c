@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include "libft.h"
 
 bool	boolcmp(char *argv, char *defined)
 {
