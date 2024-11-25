@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include "libft.h"
 
 /**
  * @brief matches function pointer to set

@@ -14,6 +14,7 @@
 #include "fcntl.h"
 #include "ft_printf.h"
 #include "get_next_line.h"
+#include <stdio.h>
 
 /**
  * @brief print out help page for user (undefined/incorrect)

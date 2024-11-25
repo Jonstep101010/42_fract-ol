@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include <math.h>
 
 static uint32_t	j_calculate_color(t_args *args, double x, double y);
 

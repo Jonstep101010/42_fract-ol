@@ -13,7 +13,6 @@
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-# include "fractol.h"
 # include <ctype.h>
 # include "MLX42.h"
 
