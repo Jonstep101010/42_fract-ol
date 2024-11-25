@@ -19,7 +19,7 @@ INCS		= ./include \
 				./include/MLX42/include/MLX42 \
 				$(GLFW)/include
 
-LIB			:= ft ftprintf m mlx42
+LIB			:= ft ftprintf gnl m mlx42
 LIBFT		:= include/libft/libft.a
 LIBFTPRINTF	:= include/libftprintf/libftprintf.a
 LIBGNL		:= include/libgnl/libgnl.a
